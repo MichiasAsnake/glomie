@@ -1,0 +1,238 @@
+
+{% liquid
+  assign product = closest.product
+  assign block_settings = block.settings
+  assign selected_variant = product.selected_or_first_available_variant
+
+  if settings.currency_code_enabled_product_cards
+    assign price_min = product.price_min | money_with_currency
+  else
+    assign price_min = product.price_min | money
+  endif
+
+  if product.price_varies
+    assign display_price = 'content.price_from' | t: price: price_min
+  endif
+
+  assign has_swatches_only = false
+
+  if product.options.size == 1
+    assign first_product_option_value = product.options_with_values.first.values.first
+
+    if first_product_option_value.swatch != blank
+      assign has_swatches_only = true
+    endif
+  endif
+
+  # Calculate savings
+  assign show_savings = false
+  assign savings_amount = 0
+  assign savings_percentage = 0
+  
+  if selected_variant.compare_at_price > selected_variant.price
+    assign show_savings = true
+    assign savings_amount = selected_variant.compare_at_price | minus: selected_variant.price
+    assign savings_percentage = savings_amount | times: 100.0 | divided_by: selected_variant.compare_at_price | round
+  endif
+%}
+
+<product-price
+  class="featured-product-price-wrapper text-right {{ block_settings.type_preset | default: 'h6' }} spacing-style"
+  data-block-id="{{ block.id }}"
+  data-product-id="{{ product.id }}"
+  style="
+    {% render 'spacing-style', settings: block_settings %}
+    --product-price-width: 100%;
+    {% if block_settings.use_subheading_font %}
+      font-family: var(--font-subheading--family);
+    {% endif %}
+  "
+  {{ block.shopify_attributes }}
+>
+  <div class="price-and-savings">
+    <div class="price-container">
+      {% if product.price_varies and has_swatches_only == false and price_min != blank %}
+        <span class="price">{{ display_price }}</span>
+      {% else %}
+        {% render 'price',
+          show_unit_price: true,
+          show_sale_price_first: block_settings.show_sale_price_first,
+          product_resource: product
+        %}
+      {% endif %}
+    </div>
+    
+    {% if show_savings and section.settings.show_savings_badge %}
+      <div class="savings-badge" style="
+        {% if section.settings.savings_badge_color != blank %}
+          background-color: {{ section.settings.savings_badge_color }};
+        {% endif %}
+        {% if section.settings.savings_badge_text_color != blank %}
+          color: {{ section.settings.savings_badge_text_color }};
+        {% endif %}
+      ">
+        {% if section.settings.savings_display_type == 'percentage' %}
+          <span class="savings-icon">✓</span> SAVE {{ savings_percentage }}%
+        {% else %}
+          {% if settings.currency_code_enabled_product_cards %}
+            <span class="savings-icon">✓</span> SAVE {{ savings_amount | money_with_currency }}
+          {% else %}
+            <span class="savings-icon">✓</span> SAVE {{ savings_amount | money }}
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</product-price>
+
+{% stylesheet %}
+  .featured-product-price-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .price-and-savings {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .price-container {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .savings-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1rem;
+    background-color: #E879F9;
+    color: white;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    white-space: nowrap;
+  }
+
+  .savings-icon {
+    font-size: 1rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.product_price",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:content.resource_reference_product_price"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:content.edit_price_in_theme_settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sale_price_first",
+      "label": "t:settings.show_sale_price_first",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Savings Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_savings_badge",
+      "label": "Show savings badge",
+      "default": true,
+      "info": "Display how much customers save when product is on sale"
+    },
+    {
+      "type": "select",
+      "id": "savings_display_type",
+      "label": "Savings display type",
+      "options": [
+        {
+          "value": "percentage",
+          "label": "Percentage (e.g., SAVE 40%)"
+        },
+        {
+          "value": "amount",
+          "label": "Amount (e.g., SAVE $24.00)"
+        }
+      ],
+      "default": "percentage"
+    },
+    {
+      "type": "color",
+      "id": "savings_badge_color",
+      "label": "Badge background color",
+      "default": "#E879F9"
+    },
+    {
+      "type": "color",
+      "id": "savings_badge_text_color",
+      "label": "Badge text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_subheading_font",
+      "label": "Use subheading font",
+      "default": false,
+      "info": "Use the subheading font from theme settings instead of default"
+    },
+    {
+      "type": "select",
+      "id": "type_preset",
+      "label": "t:settings.type_preset",
+      "options": [
+        {
+          "value": "",
+          "label": "t:options.default"
+        },
+        {
+          "value": "paragraph",
+          "label": "t:options.paragraph"
+        },
+        {
+          "value": "h1",
+          "label": "t:options.h1"
+        },
+        {
+          "value": "h2",
+          "label": "t:options.h2"
+        },
+        {
+          "value": "h3",
+          "label": "t:options.h3"
+        },
+        {
+          "value": "h4",
+          "label": "t:options.h4"
+        },
+        {
+          "value": "h5",
+          "label": "t:options.h5"
+        },
+        {
+          "value": "h6",
+          "label": "t:options.h6"
+        }
+      ],
+      "info": "t:info.edit_presets_in_theme_settings"
+    }
+  ]
+}
+{% endschema %}
