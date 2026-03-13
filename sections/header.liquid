@@ -1085,6 +1085,54 @@
       "visible_if": "{{ section.settings.enable_transparent_header_collection }}"
     }
   ],
+  "blocks": [
+    {
+      "type": "promo_box",
+      "name": "Promo Box",
+      "settings": [
+        {
+          "type": "text",
+          "id": "target_menu_item",
+          "label": "Target Menu Item",
+          "info": "Enter the name of the menu item this promo box should appear under (e.g. 'Shop')"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Special Offer"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Description of the offer goes here.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "Color Scheme",
+          "default": "primary"
+        }
+      ]
+    }
+  ],
   "presets": []
 }
 {% endschema %}

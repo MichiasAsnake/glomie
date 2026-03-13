@@ -25,6 +25,17 @@
 
 {% capture children %}
   {% for link in block_settings.menu.links %}
+    {%- assign target_promo_block = null -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'promo_box' -%}
+        {%- assign target_menu_item_down = block.settings.target_menu_item | downcase | strip -%}
+        {%- assign current_link_down = link.title | downcase | strip -%}
+        {%- if target_menu_item_down == current_link_down -%}
+          {%- assign target_promo_block = block -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
     <li
       role="presentation"
       class="menu-list__list-item"
@@ -60,7 +71,8 @@
               id: list_id,
               menu_content_type: menu_content_type,
               content_aspect_ratio: ratio,
-              image_border_radius: image_border_radius
+              image_border_radius: image_border_radius,
+              promo_block: target_promo_block
             %}
           </div>
         </div>

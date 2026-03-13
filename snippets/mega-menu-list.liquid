@@ -10,6 +10,7 @@
   @param {number} [content_aspect_ratio] - Aspect ratio for content images.
   @param {number} [image_border_radius] - Border radius for content images.
   @param {object} [section] - The section object.
+  @param {object} [promo_block] - Optional promo box block.
 
   @example
   {% render 'mega-menu-list', parent_link: link, id: 'MegaMenuList-1', grid_columns_count: 6, menu_content_type: 'featured_products' %}
@@ -194,9 +195,17 @@
   assign max_products_tablet = 3
   assign min_collections = 1
 
+  # check if we need space for a promo block
+  assign min_promo_columns = 0
+  assign min_promo_columns_tablet = 0
+  if promo_block != blank
+    assign min_promo_columns = 2
+    assign min_promo_columns_tablet = 2
+  endif
+
   if menu_content_type == 'featured_products'
     # desktop breakpoint
-    assign temp_column_count = column_count | plus: min_products
+    assign temp_column_count = column_count | plus: min_products | plus: min_promo_columns
 
     if temp_column_count > max_menu_columns
       assign max_product_columns = 2
@@ -214,7 +223,7 @@
     assign max_menu_columns = max_menu_columns | minus: max_product_columns
 
     # tablet breakpoint
-    assign temp_column_count = column_count | plus: min_products_tablet
+    assign temp_column_count = column_count | plus: min_products_tablet | plus: min_promo_columns_tablet
 
     if temp_column_count > max_menu_columns_tablet
       assign max_product_columns_tablet = 1
@@ -231,7 +240,7 @@
   if menu_content_type == 'featured_collections'
     # desktop breakpoint
     assign min_featured_collection_columns = min_collections | times: 2
-    assign temp_column_count = column_count | plus: min_featured_collection_columns
+    assign temp_column_count = column_count | plus: min_featured_collection_columns | plus: min_promo_columns
 
     if temp_column_count > max_menu_columns
       assign max_collection_columns = 2
@@ -246,6 +255,11 @@
     assign max_collection_columns_tablet = 2
     assign max_featured_collections_tablet = 1
     assign max_menu_columns_tablet = max_menu_columns_tablet | minus: max_collection_columns_tablet
+  endif
+
+  if menu_content_type == 'text' or menu_content_type == 'collection_images'
+    assign max_menu_columns = max_menu_columns | minus: min_promo_columns
+    assign max_menu_columns_tablet = max_menu_columns_tablet | minus: min_promo_columns_tablet
   endif
 %}
 
@@ -346,3 +360,29 @@
       </ul>
     </span>
 {% endcase %}
+
+{% if promo_block != blank %}
+  {% assign promo_bg = promo_block.settings.background_image %}
+  <span
+    class="mega-menu__promo-box color-{{ promo_block.settings.color_scheme }}"
+    {{ promo_block.shopify_attributes }}
+  >
+    {% if promo_bg != blank %}
+      {{ promo_bg | image_url: width: 800 | image_tag: alt: promo_bg.alt, class: 'mega-menu__promo-bg' }}
+    {% endif %}
+    
+    <div class="mega-menu__promo-content">
+      {% if promo_block.settings.heading != blank %}
+        <h3 class="mega-menu__promo-heading">{{ promo_block.settings.heading }}</h3>
+      {% endif %}
+      {% if promo_block.settings.text != blank %}
+        <div class="mega-menu__promo-text richtext">{{ promo_block.settings.text }}</div>
+      {% endif %}
+      {% if promo_block.settings.button_label != blank and promo_block.settings.button_link != blank %}
+        <a href="{{ promo_block.settings.button_link }}" class="button button--primary mega-menu__promo-button">
+          {{ promo_block.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+  </span>
+{% endif %}
