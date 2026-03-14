@@ -22,7 +22,7 @@
             "vertical_alignment": "center",
             "heading": "New Arrivals",
             "heading_preset": "h2",
-            "text": "<p>Made with care and unconditionally loved by our customers.</p>",
+            "text": "<h5>Made with care and unconditionally loved by our customers.</h5>",
             "text_preset": "rte",
             "button_label": "Shop Now",
             "button_link": "shopify://products/travel-storage-bag-shoe-storage-bag",
