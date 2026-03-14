@@ -45,16 +45,42 @@
   .hero__promo-button {
     margin-top: 0.5rem;
   }
+
+  .hero__promo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+{% endstyle %}
+
+{% style %}
+  .hero__promo-box-{{ block.id }} {
+    justify-content: {% if block.settings.vertical_alignment == 'top' %}flex-start{% elsif block.settings.vertical_alignment == 'bottom' %}flex-end{% else %}center{% endif %};
+  }
+  
+  .hero__promo-box-{{ block.id }} .hero__promo-overlay {
+    background-color: {{ block.settings.background_color | default: 'transparent' }};
+    opacity: {{ block.settings.background_opacity | divided_by: 100.0 }};
+  }
+
+  .hero__promo-box-{{ block.id }} .hero__promo-content {
+    align-items: {% if block.settings.horizontal_alignment == 'left' %}flex-start{% elsif block.settings.horizontal_alignment == 'right' %}flex-end{% else %}center{% endif %};
+    text-align: {{ block.settings.horizontal_alignment }};
+  }
 {% endstyle %}
 
 {% assign promo_bg = block.settings.background_image %}
 <span
-  class="hero__promo-box color-{{ block.settings.color_scheme }}"
+  class="hero__promo-box color-{{ block.settings.color_scheme }} hero__promo-box-{{ block.id }}"
   {{ block.shopify_attributes }}
 >
   {% if promo_bg != blank %}
     {{ promo_bg | image_url: width: 800 | image_tag: alt: promo_bg.alt, class: 'hero__promo-bg' }}
   {% endif %}
+  <div class="hero__promo-overlay"></div>
   
   <div class="hero__promo-content">
     {% if block.settings.heading != blank %}
@@ -80,6 +106,44 @@
       "type": "image_picker",
       "id": "background_image",
       "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "background_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Opacity",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment",
+      "label": "Horizontal Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical Alignment",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "center"
     },
     {
       "type": "text",
