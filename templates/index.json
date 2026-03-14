@@ -20,6 +20,8 @@
             "background_opacity": 40,
             "horizontal_alignment": "right",
             "vertical_alignment": "center",
+            "width": "custom",
+            "custom_width": 600,
             "heading": "New Arrivals",
             "heading_preset": "h2",
             "text": "<h5>Made with care and unconditionally loved by our customers.</h5>",
