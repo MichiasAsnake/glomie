@@ -84,10 +84,10 @@
   
   <div class="hero__promo-content">
     {% if block.settings.heading != blank %}
-      <h3 class="hero__promo-heading">{{ block.settings.heading }}</h3>
+      <div class="hero__promo-heading {{ block.settings.heading_preset }}">{{ block.settings.heading }}</div>
     {% endif %}
     {% if block.settings.text != blank %}
-      <div class="hero__promo-text richtext">{{ block.settings.text }}</div>
+      <div class="hero__promo-text richtext {{ block.settings.text_preset }}">{{ block.settings.text }}</div>
     {% endif %}
     {% if block.settings.button_label != blank and block.settings.button_link != blank %}
       <a href="{{ block.settings.button_link }}" class="button button--primary hero__promo-button">
@@ -152,10 +152,34 @@
       "default": "Special Offer"
     },
     {
+      "type": "select",
+      "id": "heading_preset",
+      "label": "Heading Preset",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ],
+      "default": "h3"
+    },
+    {
       "type": "richtext",
       "id": "text",
       "label": "Text",
       "default": "<p>Description of the offer goes here.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_preset",
+      "label": "Text Preset",
+      "options": [
+        { "value": "rte", "label": "Default" },
+        { "value": "paragraph", "label": "Paragraph" }
+      ],
+      "default": "paragraph"
     },
     {
       "type": "text",
