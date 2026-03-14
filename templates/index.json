@@ -16,7 +16,7 @@
           "type": "promo-box",
           "name": "Promo Box",
           "settings": {
-            "background_color": "#b9b9b9",
+            "background_color": "#ffffff",
             "background_opacity": 50,
             "horizontal_alignment": "right",
             "vertical_alignment": "center",
@@ -28,7 +28,7 @@
             "text_preset": "rte",
             "button_label": "Shop Now",
             "button_link": "shopify://products/travel-storage-bag-shoe-storage-bag",
-            "color_scheme": "scheme-6"
+            "color_scheme": "scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7"
           },
           "blocks": {}
         }
