@@ -59,6 +59,17 @@
 {% style %}
   .hero__promo-box-{{ block.id }} {
     justify-content: {% if block.settings.vertical_alignment == 'top' %}flex-start{% elsif block.settings.vertical_alignment == 'bottom' %}flex-end{% else %}center{% endif %};
+    {% if block.settings.width == 'custom' %}
+      max-width: {{ block.settings.custom_width }}px;
+      margin-left: auto;
+      margin-right: auto;
+    {% elsif block.settings.width == 'fit-content' %}
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    {% else %}
+      width: 100%;
+    {% endif %}
   }
   
   .hero__promo-box-{{ block.id }} .hero__promo-overlay {
@@ -144,6 +155,27 @@
         { "value": "bottom", "label": "Bottom" }
       ],
       "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        { "value": "100%", "label": "Full Width" },
+        { "value": "fit-content", "label": "Fit Content" },
+        { "value": "custom", "label": "Custom Width" }
+      ],
+      "default": "100%"
+    },
+    {
+      "type": "range",
+      "id": "custom_width",
+      "min": 200,
+      "max": 1200,
+      "step": 10,
+      "unit": "px",
+      "label": "Custom Width (px)",
+      "default": 600
     },
     {
       "type": "text",
