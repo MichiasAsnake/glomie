@@ -33,7 +33,7 @@
         "gap": 16,
         "section_width": "page-width",
         "section_height": "custom",
-        "section_height_custom": 88,
+        "section_height_custom": 92,
         "custom_mobile_size": false,
         "section_height_custom_mobile": 50,
         "color_scheme": "scheme-5",
