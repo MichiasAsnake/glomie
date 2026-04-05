@@ -388,6 +388,9 @@
     {% else %}
       --hero-min-height: var(--section-height-{{ section.settings.section_height }});
     {% endif %}
+    {% if section.settings.custom_mobile_size %}
+      --hero-min-height-mobile: {{ section.settings.section_height_custom_mobile }}svh;
+    {% endif %}
   "
   {% if request.visual_preview_mode %}
     data-shopify-visual-preview
@@ -479,8 +482,6 @@
 
   .hero[data-shopify-visual-preview] {
     --hero-min-height: 600px;
-
-    min-height: 600px;
   }
 
   .hero__container {
@@ -563,6 +564,10 @@
   }
 
   @media screen and (max-width: 749px) {
+    .hero {
+      min-height: calc(var(--hero-min-height-mobile, var(--hero-min-height)) - var(--hero-height-offset));
+    }
+
     .hero__image--desktop,
     .hero__video--desktop,
     .hero__video-wrapper--desktop {
@@ -1065,6 +1070,28 @@
       "default": 50,
       "unit": "%",
       "visible_if": "{{ section.settings.section_height == 'custom' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_mobile_size",
+      "label": "t:settings.custom_mobile_size",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:content.mobile_size",
+      "visible_if": "{{ section.settings.custom_mobile_size == true }}"
+    },
+    {
+      "type": "range",
+      "id": "section_height_custom_mobile",
+      "label": "t:settings.mobile_height",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50,
+      "unit": "%",
+      "visible_if": "{{ section.settings.custom_mobile_size == true }}"
     },
     {
       "type": "header",
