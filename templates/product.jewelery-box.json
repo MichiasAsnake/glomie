@@ -456,7 +456,7 @@
               "type": "product-description",
               "name": "t:names.product_description",
               "settings": {
-                "text": "<p>A compact jewelry box is one of the easiest ways to keep small accessories protected while you travel. This one is designed to separate rings, earrings, necklaces, and everyday pieces into dedicated sections so they stay cleaner, easier to find, and ready to wear.</p><p>Whether you are packing light for a weekend trip or organizing your daily collection at home, the structured shape and soft interior help keep everything in place without adding unnecessary bulk.</p>",
+                "text": "<p></p>{{ closest.product.description }}",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "center",
