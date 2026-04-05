@@ -110,6 +110,16 @@
     assign found_media = selected_product.media | where: 'id', media.id
     assign sorted_media = sorted_media | concat: found_media
   endfor
+
+  assign initial_slide_index = 0
+  if selected_variant_media
+    for media in sorted_media
+      if media.id == selected_variant_media.id
+        assign initial_slide_index = forloop.index0
+        break
+      endif
+    endfor
+  endif
   assign has_image_drop = sorted_media | has: 'media_type', 'image'
 
   # Determine if we're in single column mode (carousel or grid with one column)
@@ -397,6 +407,7 @@
       class: slideshow_class,
       slides: slides,
       slide_count: sorted_media.size,
+      initial_slide: initial_slide_index,
       slideshow_arrows: slideshow_arrows,
       arrows_position: icons_position,
       controls: controls
