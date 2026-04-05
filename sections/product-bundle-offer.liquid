@@ -1,0 +1,802 @@
+{% liquid
+  assign offer_type = section.settings.offer_type
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign current_variant = product.selected_or_first_available_variant
+  assign show_currency_code = settings.currency_code_enabled_product_pages
+
+  if heading == blank
+    if offer_type == 'fixed_bundle'
+      assign heading = 'Fixed Bundle'
+    else
+      assign heading = 'Volume Discount'
+    endif
+  endif
+
+  if subheading == blank
+    if offer_type == 'fixed_bundle' and section.settings.fixed_discount_percentage > 0
+      assign subheading = 'Buy all with a [discount]% OFF'
+      assign subheading = subheading | replace: '[discount]', section.settings.fixed_discount_percentage
+    elsif offer_type == 'volume_discount'
+      assign subheading = 'Buy more, save more'
+    endif
+  endif
+
+  assign fixed_bundle_blocks = section.blocks | where: 'type', 'bundle_product'
+  assign volume_tier_blocks = section.blocks | where: 'type', 'volume_tier'
+  assign fixed_bundle_count = 0
+  assign volume_tier_count = 0
+  assign fixed_regular_total = 0
+  assign selected_tier_found = false
+
+  for block in fixed_bundle_blocks
+    assign bundle_product = block.settings.product
+    if bundle_product != blank and bundle_product.selected_or_first_available_variant != blank
+      assign fixed_bundle_count = fixed_bundle_count | plus: 1
+      assign fixed_regular_total = fixed_regular_total | plus: bundle_product.selected_or_first_available_variant.price
+    endif
+  endfor
+
+  if section.settings.include_current_product and current_variant != blank
+    assign fixed_regular_total = fixed_regular_total | plus: current_variant.price
+  endif
+
+  assign fixed_discounted_total = fixed_regular_total
+  if section.settings.fixed_discount_percentage > 0
+    assign fixed_discount_multiplier = 100 | minus: section.settings.fixed_discount_percentage
+    assign fixed_discounted_total = fixed_regular_total | times: fixed_discount_multiplier | divided_by: 100.0 | round
+  endif
+
+  for block in volume_tier_blocks
+    if block.settings.quantity > 0
+      assign volume_tier_count = volume_tier_count | plus: 1
+      if selected_tier_found == false and block.settings.default_selected
+        assign selected_tier_found = true
+      endif
+    endif
+  endfor
+
+  assign should_render = false
+  if offer_type == 'fixed_bundle' and fixed_bundle_count > 0
+    assign should_render = true
+  elsif offer_type == 'volume_discount' and volume_tier_count > 0
+    assign should_render = true
+  endif
+%}
+
+{% if should_render or request.design_mode %}
+  <div class="section-background color-{{ section.settings.color_scheme }}"></div>
+  <section
+    class="product-bundle-offer-section color-{{ section.settings.color_scheme }}"
+    style="padding-block-start: {{ section.settings.padding-block-start }}px; padding-block-end: {{ section.settings.padding-block-end }}px;"
+  >
+    <div class="section section--page-width">
+      {% if should_render %}
+        {% liquid
+          assign submit_disabled = false
+          if offer_type == 'volume_discount' and current_variant.available != true
+            assign submit_disabled = true
+          elsif offer_type == 'fixed_bundle' and section.settings.include_current_product and current_variant.available != true
+            assign submit_disabled = true
+          endif
+        %}
+        <product-bundle-offer
+          id="ProductBundleOffer-{{ section.id }}"
+          class="product-bundle-offer product-bundle-offer--{{ offer_type }}"
+          data-section-id="{{ section.id }}"
+          data-product-id="{{ product.id }}"
+          data-offer-type="{{ offer_type }}"
+          data-currency-code="{{ cart.currency.iso_code }}"
+          data-show-currency-code="{{ show_currency_code }}"
+          data-current-variant-id="{{ current_variant.id }}"
+          data-current-variant-price="{{ current_variant.price }}"
+          data-current-variant-available="{{ current_variant.available }}"
+          data-current-variant-compare-at-price="{{ current_variant.compare_at_price | default: 0 }}"
+          data-fixed-discount-percent="{{ section.settings.fixed_discount_percentage }}"
+          data-include-current-product="{{ section.settings.include_current_product }}"
+          data-heading="{{ heading | escape }}"
+        >
+          <div class="product-bundle-offer__panel">
+            <div class="product-bundle-offer__header">
+              <div>
+                <h2 class="product-bundle-offer__title">{{ heading }}</h2>
+                {% if subheading != blank %}
+                  <p class="product-bundle-offer__subtitle">{{ subheading }}</p>
+                {% endif %}
+              </div>
+              {% if section.settings.eyebrow != blank %}
+                <span class="product-bundle-offer__eyebrow">{{ section.settings.eyebrow }}</span>
+              {% endif %}
+            </div>
+
+            {% if offer_type == 'fixed_bundle' %}
+              <div class="product-bundle-offer__price-stack">
+                <span class="product-bundle-offer__price" data-fixed-price>
+                  {% if show_currency_code %}
+                    {{ fixed_discounted_total | money_with_currency }}
+                  {% else %}
+                    {{ fixed_discounted_total | money }}
+                  {% endif %}
+                </span>
+                <s
+                  class="product-bundle-offer__compare-price{% if section.settings.fixed_discount_percentage == 0 %} hidden{% endif %}"
+                  data-fixed-compare-price
+                >
+                  {% if show_currency_code %}
+                    {{ fixed_regular_total | money_with_currency }}
+                  {% else %}
+                    {{ fixed_regular_total | money }}
+                  {% endif %}
+                </s>
+              </div>
+
+              <div class="product-bundle-offer__items">
+                {% if section.settings.include_current_product and current_variant != blank %}
+                  {% liquid
+                    assign current_image = current_variant.featured_image | default: product.featured_image
+                    assign current_variant_title = current_variant.title
+                    if product.has_only_default_variant
+                      assign current_variant_title = ''
+                    endif
+                  %}
+                  <article
+                    class="product-bundle-offer__item"
+                    data-bundle-item
+                    data-current-item="true"
+                    data-product-title="{{ product.title | escape }}"
+                    data-variant-id="{{ current_variant.id }}"
+                    data-price="{{ current_variant.price }}"
+                    data-available="{{ current_variant.available }}"
+                  >
+                    <div class="product-bundle-offer__item-media">
+                      {% if current_image %}
+                        {{
+                          current_image
+                          | image_url: width: 140
+                          | image_tag:
+                            loading: 'lazy',
+                            widths: '70',
+                            sizes: '70px',
+                            class: 'product-bundle-offer__item-image',
+                            alt: product.title
+                        }}
+                      {% else %}
+                        <div class="product-bundle-offer__item-image product-bundle-offer__item-image--placeholder"></div>
+                      {% endif %}
+                    </div>
+                    <div class="product-bundle-offer__item-copy">
+                      <p class="product-bundle-offer__item-title">{{ product.title }}</p>
+                      <p
+                        class="product-bundle-offer__item-meta{% if current_variant_title == blank %} hidden{% endif %}"
+                        data-current-variant-title
+                      >
+                        {{ current_variant_title }}
+                      </p>
+                    </div>
+                    <span
+                      class="product-bundle-offer__item-price"
+                      data-current-item-price
+                    >
+                      {% if show_currency_code %}
+                        {{ current_variant.price | money_with_currency }}
+                      {% else %}
+                        {{ current_variant.price | money }}
+                      {% endif %}
+                    </span>
+                  </article>
+                {% endif %}
+
+                {% for block in fixed_bundle_blocks %}
+                  {% liquid
+                    assign bundle_product = block.settings.product
+                    assign bundle_variant = bundle_product.selected_or_first_available_variant
+                    if bundle_product == blank or bundle_variant == blank
+                      continue
+                    endif
+
+                    assign bundle_image = bundle_variant.featured_image | default: bundle_product.featured_image
+                    assign bundle_title = block.settings.title | default: bundle_product.title
+                  %}
+                  <article
+                    class="product-bundle-offer__item"
+                    data-bundle-item
+                    data-variant-id="{{ bundle_variant.id }}"
+                    data-price="{{ bundle_variant.price }}"
+                    data-available="{{ bundle_variant.available }}"
+                    data-product-title="{{ bundle_title | escape }}"
+                    {{ block.shopify_attributes }}
+                  >
+                    <div class="product-bundle-offer__item-media">
+                      {% if bundle_image %}
+                        {{
+                          bundle_image
+                          | image_url: width: 140
+                          | image_tag:
+                            loading: 'lazy',
+                            widths: '70',
+                            sizes: '70px',
+                            class: 'product-bundle-offer__item-image',
+                            alt: bundle_title
+                        }}
+                      {% else %}
+                        <div class="product-bundle-offer__item-image product-bundle-offer__item-image--placeholder"></div>
+                      {% endif %}
+                    </div>
+                    <div class="product-bundle-offer__item-copy">
+                      <p class="product-bundle-offer__item-title">{{ bundle_title }}</p>
+                      {% if bundle_variant.title != 'Default Title' %}
+                        <p class="product-bundle-offer__item-meta">{{ bundle_variant.title }}</p>
+                      {% endif %}
+                    </div>
+                    <span class="product-bundle-offer__item-price">
+                      {% if show_currency_code %}
+                        {{ bundle_variant.price | money_with_currency }}
+                      {% else %}
+                        {{ bundle_variant.price | money }}
+                      {% endif %}
+                    </span>
+                  </article>
+                {% endfor %}
+              </div>
+            {% else %}
+              <div class="product-bundle-offer__tiers">
+                {% assign volume_input_name = 'volume-tier-' | append: section.id %}
+                {% assign fallback_selected = true %}
+                {% for block in volume_tier_blocks %}
+                  {% if block.settings.quantity < 1 %}
+                    {% continue %}
+                  {% endif %}
+                  {% liquid
+                    assign quantity = block.settings.quantity
+                    assign discount = block.settings.discount_percentage
+                    assign compare_price = current_variant.price | times: quantity
+                    assign discount_multiplier = 100 | minus: discount
+                    assign final_price = compare_price | times: discount_multiplier | divided_by: 100.0 | round
+                    assign checked = false
+                    if selected_tier_found and block.settings.default_selected
+                      assign checked = true
+                    elsif selected_tier_found == false and fallback_selected
+                      assign checked = true
+                      assign fallback_selected = false
+                    endif
+
+                    assign tier_title = block.settings.title
+                    if tier_title == blank
+                      assign tier_title = 'Buy [quantity]'
+                      assign tier_title = tier_title | replace: '[quantity]', quantity
+                    endif
+                  %}
+                  <label
+                    class="product-bundle-offer__tier"
+                    data-tier-card
+                    {% if checked %}
+                      data-selected="true"
+                    {% endif %}
+                    {{ block.shopify_attributes }}
+                  >
+                    <input
+                      class="product-bundle-offer__tier-input visually-hidden"
+                      type="radio"
+                      name="{{ volume_input_name }}"
+                      value="{{ quantity }}"
+                      data-tier-input
+                      data-quantity="{{ quantity }}"
+                      data-discount="{{ discount }}"
+                      data-tier-label="{{ tier_title | escape }}"
+                      {% if checked %}
+                        checked
+                      {% endif %}
+                    >
+                    <span class="product-bundle-offer__tier-radio"></span>
+                    <span class="product-bundle-offer__tier-copy">
+                      <span class="product-bundle-offer__tier-title-row">
+                        <strong class="product-bundle-offer__tier-title">{{ tier_title }}</strong>
+                        {% if block.settings.badge != blank %}
+                          <span class="product-bundle-offer__tier-badge">{{ block.settings.badge }}</span>
+                        {% endif %}
+                      </span>
+                      {% if discount > 0 %}
+                        <span class="product-bundle-offer__tier-note">Save {{ discount }}%</span>
+                      {% else %}
+                        <span class="product-bundle-offer__tier-note">Standard price</span>
+                      {% endif %}
+                    </span>
+                    <span class="product-bundle-offer__tier-pricing">
+                      <span
+                        class="product-bundle-offer__tier-price"
+                        data-tier-final-price
+                      >
+                        {% if show_currency_code %}
+                          {{ final_price | money_with_currency }}
+                        {% else %}
+                          {{ final_price | money }}
+                        {% endif %}
+                      </span>
+                      <s
+                        class="product-bundle-offer__tier-compare{% if discount == 0 %} hidden{% endif %}"
+                        data-tier-compare-price
+                      >
+                        {% if show_currency_code %}
+                          {{ compare_price | money_with_currency }}
+                        {% else %}
+                          {{ compare_price | money }}
+                        {% endif %}
+                      </s>
+                    </span>
+                  </label>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% if section.settings.note != blank %}
+              <p class="product-bundle-offer__note">{{ section.settings.note }}</p>
+            {% endif %}
+
+            <div class="product-bundle-offer__footer">
+              <button
+                type="button"
+                class="product-bundle-offer__button button button--primary"
+                data-offer-submit
+                {% if submit_disabled %}
+                  disabled
+                {% endif %}
+              >
+                {{ section.settings.button_label }}
+              </button>
+              <p
+                class="product-bundle-offer__status"
+                data-offer-status
+                aria-live="polite"
+              ></p>
+            </div>
+          </div>
+        </product-bundle-offer>
+      {% elsif request.design_mode %}
+        <div class="product-bundle-offer product-bundle-offer--placeholder">
+          <div class="product-bundle-offer__panel product-bundle-offer__panel--placeholder">
+            <h2 class="product-bundle-offer__title">{{ heading }}</h2>
+            <p class="product-bundle-offer__subtitle">
+              Add bundle products for a fixed bundle or add quantity tiers for a volume discount.
+            </p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
+
+{% stylesheet %}
+  .product-bundle-offer-section {
+    position: relative;
+  }
+
+  .product-bundle-offer {
+    max-width: 32rem;
+    margin: 0 auto;
+  }
+
+  .product-bundle-offer__panel {
+    background: color-mix(in srgb, rgb(var(--color-background-rgb)) 94%, white);
+    border: 1px solid rgb(var(--color-foreground-rgb) / 0.08);
+    border-radius: 1.5rem;
+    box-shadow: 0 24px 60px rgb(15 23 42 / 0.08);
+    padding: 1.375rem;
+  }
+
+  .product-bundle-offer__panel--placeholder {
+    border-style: dashed;
+    box-shadow: none;
+  }
+
+  .product-bundle-offer__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .product-bundle-offer__eyebrow {
+    background: rgb(var(--color-foreground-rgb));
+    color: rgb(var(--color-background-rgb));
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.4rem 0.7rem;
+    white-space: nowrap;
+  }
+
+  .product-bundle-offer__title {
+    margin: 0;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+
+  .product-bundle-offer__subtitle,
+  .product-bundle-offer__note,
+  .product-bundle-offer__status,
+  .product-bundle-offer__item-meta,
+  .product-bundle-offer__tier-note {
+    color: rgb(var(--color-foreground-rgb) / 0.7);
+  }
+
+  .product-bundle-offer__subtitle {
+    margin: 0.35rem 0 0;
+    font-size: 0.98rem;
+  }
+
+  .product-bundle-offer__price-stack {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-bundle-offer__price {
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .product-bundle-offer__compare-price,
+  .product-bundle-offer__tier-compare {
+    font-size: 0.95rem;
+    text-decoration-thickness: 1px;
+  }
+
+  .product-bundle-offer__items,
+  .product-bundle-offer__tiers {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .product-bundle-offer__item,
+  .product-bundle-offer__tier {
+    display: grid;
+    align-items: center;
+    gap: 0.9rem;
+    background: rgb(var(--color-background-rgb));
+    border: 1px solid rgb(var(--color-foreground-rgb) / 0.1);
+    border-radius: 1rem;
+    padding: 0.85rem;
+  }
+
+  .product-bundle-offer__item {
+    grid-template-columns: 4rem minmax(0, 1fr) auto;
+  }
+
+  .product-bundle-offer__item-media {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    background: rgb(var(--color-foreground-rgb) / 0.04);
+  }
+
+  .product-bundle-offer__item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .product-bundle-offer__item-image--placeholder {
+    background:
+      linear-gradient(135deg, rgb(var(--color-foreground-rgb) / 0.06), rgb(var(--color-foreground-rgb) / 0.12));
+  }
+
+  .product-bundle-offer__item-copy {
+    min-width: 0;
+  }
+
+  .product-bundle-offer__item-title,
+  .product-bundle-offer__tier-title {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.2;
+  }
+
+  .product-bundle-offer__item-meta {
+    margin: 0.2rem 0 0;
+    font-size: 0.82rem;
+  }
+
+  .product-bundle-offer__item-price,
+  .product-bundle-offer__tier-price {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .product-bundle-offer__tier {
+    grid-template-columns: auto 1fr auto;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .product-bundle-offer__tier:hover {
+    transform: translateY(-1px);
+  }
+
+  .product-bundle-offer__tier[data-selected='true'] {
+    border-color: rgb(var(--color-foreground-rgb));
+    box-shadow: 0 0 0 1px rgb(var(--color-foreground-rgb));
+  }
+
+  .product-bundle-offer__tier-radio {
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 1.5px solid rgb(var(--color-foreground-rgb) / 0.3);
+    border-radius: 999px;
+    position: relative;
+  }
+
+  .product-bundle-offer__tier[data-selected='true'] .product-bundle-offer__tier-radio::after {
+    content: '';
+    position: absolute;
+    inset: 0.18rem;
+    border-radius: inherit;
+    background: rgb(var(--color-foreground-rgb));
+  }
+
+  .product-bundle-offer__tier-copy {
+    display: grid;
+    gap: 0.28rem;
+    min-width: 0;
+  }
+
+  .product-bundle-offer__tier-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .product-bundle-offer__tier-note {
+    font-size: 0.85rem;
+  }
+
+  .product-bundle-offer__tier-badge {
+    background: rgb(var(--color-foreground-rgb));
+    color: rgb(var(--color-background-rgb));
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1;
+    padding: 0.32rem 0.5rem;
+  }
+
+  .product-bundle-offer__tier-pricing {
+    display: grid;
+    justify-items: end;
+    gap: 0.18rem;
+  }
+
+  .product-bundle-offer__note {
+    margin: 0.9rem 0 0;
+    font-size: 0.82rem;
+  }
+
+  .product-bundle-offer__footer {
+    margin-top: 1rem;
+  }
+
+  .product-bundle-offer__button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .product-bundle-offer__button[disabled],
+  .product-bundle-offer__button[data-loading='true'] {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+
+  .product-bundle-offer__status {
+    min-height: 1.25rem;
+    margin: 0.6rem 0 0;
+    font-size: 0.82rem;
+  }
+
+  .product-bundle-offer__status[data-state='error'] {
+    color: #b42318;
+  }
+
+  .product-bundle-offer__status[data-state='success'] {
+    color: #027a48;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-bundle-offer__panel {
+      padding: 1rem;
+      border-radius: 1.2rem;
+    }
+
+    .product-bundle-offer__item {
+      grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+      gap: 0.7rem;
+    }
+
+    .product-bundle-offer__item-media {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+
+    .product-bundle-offer__tier {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .product-bundle-offer__tier-pricing {
+      grid-column: 2;
+      justify-items: start;
+      margin-left: 1.65rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Bundle Offer",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "blocks": [
+    {
+      "type": "bundle_product",
+      "name": "Bundle product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title override"
+        }
+      ]
+    },
+    {
+      "type": "volume_tier",
+      "name": "Volume tier",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tier title"
+        },
+        {
+          "type": "range",
+          "id": "quantity",
+          "label": "Quantity",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "range",
+          "id": "discount_percentage",
+          "label": "Discount %",
+          "min": 0,
+          "max": 80,
+          "step": 1,
+          "default": 10
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge"
+        },
+        {
+          "type": "checkbox",
+          "id": "default_selected",
+          "label": "Select by default",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "offer_type",
+      "label": "Offer type",
+      "options": [
+        {
+          "value": "fixed_bundle",
+          "label": "Fixed bundle"
+        },
+        {
+          "value": "volume_discount",
+          "label": "Volume discount"
+        }
+      ],
+      "default": "fixed_bundle"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "range",
+      "id": "fixed_discount_percentage",
+      "label": "Fixed bundle discount %",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "default": 20,
+      "visible_if": "{{ section.settings.offer_type == 'fixed_bundle' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "include_current_product",
+      "label": "Include current product in fixed bundle",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Add to cart"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle Offer"
+    }
+  ]
+}
+{% endschema %}

@@ -43,6 +43,11 @@
     endif
   endif
 
+  assign mobile_color_scheme = section.settings.color_scheme_mobile
+  if mobile_color_scheme == blank
+    assign mobile_color_scheme = section.settings.color_scheme_top
+  endif
+
   capture logo
     content_for 'block', type: '_header-logo', id: 'header-logo'
   endcapture
@@ -171,6 +176,18 @@
   if collapse_header_paddings_class
     assign class = class | append: ' ' | append: collapse_header_paddings_class
   endif
+
+  if section.settings.keep_logo_on_sticky_header
+    assign class = class | append: ' header--keep-transparent-logo-on-sticky'
+  endif
+
+  if section.settings.enable_scroll_background_blur
+    assign class = class | append: ' header--scroll-blur'
+  endif
+
+  if section.settings.enable_mobile_header_color_scheme
+    assign class = class | append: ' header--mobile-color-scheme'
+  endif
 %}
 
 <script type="application/ld+json">
@@ -188,6 +205,10 @@
 <header-component
   id="header-component"
   class="{{ class }}"
+  style="
+    --header-scroll-blur-amount: {{ section.settings.scroll_background_blur_strength | default: 12 }}px;
+    --header-scroll-bg-opacity: {{ section.settings.scroll_background_opacity | default: 85 | times: 0.01 }};
+  "
   {% if transparent %}
     transparent="{{ transparent }}"
   {% endif %}
@@ -402,12 +423,64 @@
     opacity: 0;
   }
 
+  .header.header--scroll-blur[sticky='always']:not([data-scroll-direction='none']) .header__row,
+  .header.header--scroll-blur[sticky='scroll-up'][data-sticky-state='active'] .header__row {
+    -webkit-backdrop-filter: blur(var(--header-scroll-blur-amount, 12px));
+    backdrop-filter: blur(var(--header-scroll-blur-amount, 12px));
+    background-color: rgb(var(--color-background-rgb, 255 255 255) / var(--header-scroll-bg-opacity, 0.85));
+  }
+
+  .header.header--keep-transparent-logo-on-sticky[transparent='not-sticky'][sticky='always']:not(
+      [data-scroll-direction='none']
+    ),
+  .header.header--keep-transparent-logo-on-sticky[transparent='not-sticky'][sticky='scroll-up'][
+      data-sticky-state='active'
+    ] {
+    --header-logo-display: none;
+    --header-logo-inverse-display: block;
+  }
+
   .header__row {
     position: relative;
 
     /* will default to bg from its color scheme unless --header-bg-color is transparent */
     background-color: var(--header-bg-color, var(--color-background));
   }
+
+  {% if section.settings.enable_mobile_header_color_scheme %}
+    @media screen and (max-width: 749px) {
+      .header.header--mobile-color-scheme {
+        --color-foreground-heading: rgb({{ mobile_color_scheme.settings.foreground_heading.rgba }});
+        --color-foreground-heading-rgb: {{ mobile_color_scheme.settings.foreground_heading.rgb }};
+        --color-foreground: rgb({{ mobile_color_scheme.settings.foreground.rgba }});
+        --color-foreground-rgb: {{ mobile_color_scheme.settings.foreground.rgb }};
+        --color-background: rgb({{ mobile_color_scheme.settings.background.rgba }});
+        --color-background-rgb: {{ mobile_color_scheme.settings.background.rgb }};
+        --color-border: rgb({{ mobile_color_scheme.settings.border.rgba }});
+        --color-border-rgb: {{ mobile_color_scheme.settings.border.rgb }};
+        --color-primary: rgb({{ mobile_color_scheme.settings.primary.rgba }});
+        --color-primary-rgb: {{ mobile_color_scheme.settings.primary.rgb }};
+        --color-primary-hover: rgb({{ mobile_color_scheme.settings.primary_hover.rgba }});
+        --color-primary-hover-rgb: {{ mobile_color_scheme.settings.primary_hover.rgb }};
+        --header-bg-color: var(--color-background);
+      }
+
+      .header.header--mobile-color-scheme .header__row {
+        --color-foreground-heading: rgb({{ mobile_color_scheme.settings.foreground_heading.rgba }});
+        --color-foreground-heading-rgb: {{ mobile_color_scheme.settings.foreground_heading.rgb }};
+        --color-foreground: rgb({{ mobile_color_scheme.settings.foreground.rgba }});
+        --color-foreground-rgb: {{ mobile_color_scheme.settings.foreground.rgb }};
+        --color-background: rgb({{ mobile_color_scheme.settings.background.rgba }});
+        --color-background-rgb: {{ mobile_color_scheme.settings.background.rgb }};
+        --color-border: rgb({{ mobile_color_scheme.settings.border.rgba }});
+        --color-border-rgb: {{ mobile_color_scheme.settings.border.rgb }};
+        --color-primary: rgb({{ mobile_color_scheme.settings.primary.rgba }});
+        --color-primary-rgb: {{ mobile_color_scheme.settings.primary.rgb }};
+        --color-primary-hover: rgb({{ mobile_color_scheme.settings.primary_hover.rgba }});
+        --color-primary-hover-rgb: {{ mobile_color_scheme.settings.primary_hover.rgb }};
+      }
+    }
+  {% endif %}
 
   .header__row--top:not(.divider--page-width),
   .header__row--top.divider--page-width .header__columns,
@@ -943,6 +1016,42 @@
       "default": "always"
     },
     {
+      "type": "checkbox",
+      "id": "enable_scroll_background_blur",
+      "label": "Blur background on scroll",
+      "default": false,
+      "visible_if": "{{ section.settings.enable_sticky_header != 'never' }}"
+    },
+    {
+      "type": "range",
+      "id": "scroll_background_blur_strength",
+      "label": "Blur strength",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 12,
+      "visible_if": "{{ section.settings.enable_sticky_header != 'never' and section.settings.enable_scroll_background_blur }}"
+    },
+    {
+      "type": "range",
+      "id": "scroll_background_opacity",
+      "label": "Blur background opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 85,
+      "visible_if": "{{ section.settings.enable_sticky_header != 'never' and section.settings.enable_scroll_background_blur }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "keep_logo_on_sticky_header",
+      "label": "Keep logo image on scrolling header",
+      "default": false,
+      "visible_if": "{{ section.settings.enable_transparent_header_home or section.settings.enable_transparent_header_product or section.settings.enable_transparent_header_collection }}"
+    },
+    {
       "type": "range",
       "id": "divider_width",
       "label": "t:settings.divider_thickness",
@@ -995,6 +1104,19 @@
       "label": "t:settings.bottom_row",
       "default": "primary",
       "visible_if": "{{ section.settings.menu_row == 'bottom' or section.settings.localization_row == 'bottom' or section.settings.search_row == 'bottom' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_mobile_header_color_scheme",
+      "label": "Use separate mobile header colors",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme_mobile",
+      "label": "Mobile",
+      "default": "primary",
+      "visible_if": "{{ section.settings.enable_mobile_header_color_scheme }}"
     },
     {
       "type": "color_scheme",

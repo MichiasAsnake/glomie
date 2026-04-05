@@ -14,6 +14,20 @@
     "announcement_bar": {
       "type": "header-announcements",
       "blocks": {
+        "announcement_wPCXbn": {
+          "type": "_announcement",
+          "name": "t:names.announcement",
+          "settings": {
+            "text": "<strong>Sign up to our newsletter for 10% Off!</strong>",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "1rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
         "announcement_1": {
           "type": "_announcement",
           "settings": {
@@ -29,6 +43,7 @@
         }
       },
       "block_order": [
+        "announcement_wPCXbn",
         "announcement_1"
       ],
       "settings": {
@@ -79,7 +94,7 @@
         }
       },
       "settings": {
-        "logo_position": "left",
+        "logo_position": "center",
         "menu_position": "right",
         "menu_row": "top",
         "show_search": false,
@@ -95,12 +110,18 @@
         "section_width": "page-width",
         "section_height": "standard",
         "enable_sticky_header": "always",
+        "enable_scroll_background_blur": true,
+        "scroll_background_blur_strength": 14,
+        "scroll_background_opacity": 76,
+        "keep_logo_on_sticky_header": false,
         "divider_width": 0,
         "divider_size": "page-width",
         "border_width": 0,
-        "color_scheme_top": "scheme-c5f26204-585d-41f7-ae65-6a532ce07515",
-        "color_scheme_bottom": "",
-        "color_scheme_transparent": "scheme-2",
+        "color_scheme_top": "scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7",
+        "color_scheme_bottom": "scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7",
+        "enable_mobile_header_color_scheme": true,
+        "color_scheme_mobile": "scheme-3",
+        "color_scheme_transparent": "scheme-4",
         "enable_transparent_header_home": true,
         "home_color_scheme": "inverse",
         "enable_transparent_header_product": false,

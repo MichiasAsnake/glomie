@@ -129,7 +129,7 @@
                   "type": "product-title",
                   "name": "t:names.title",
                   "settings": {
-                    "subheading": "Pack Shoes Separately, Travel Cleaner",
+                    "subheading": "9-Piece Packing Cube Set for Organized Travel",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -184,7 +184,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p><strong>Separate and Organized:</strong> Keep shoes away from clothing to protect the rest of your luggage<br/><br/><strong>Travel-Ready Material:</strong> Lightweight, durable fabric helps shield from dust and light moisture<br/><br/><strong>Compact Design:</strong> Folds flat when not in use and fits easily in carry-ons or suitcases<br/><br/><strong>Everyday Convenience:</strong> Ideal for trips, gym shoes, or spare footwear storage at home</p>",
+                "text": "<p><strong>9-Piece Set:</strong> A complete packing system for clothing, shoes, laundry, and smaller travel essentials<br/><br/><strong>Faster Packing:</strong> Sort outfits and categories before you leave so unpacking is simpler on arrival<br/><br/><strong>Space-Saving Layout:</strong> Lightweight organizers help keep your suitcase tidy without adding bulk<br/><br/><strong>Made for Repeat Trips:</strong> Breathable panels and zip closures make the set easy to use again and again</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -256,16 +256,16 @@
               },
               "block_order": []
             },
-            "fast_bundle_bundle_offer_JHacUx": {
+            "fast_bundle_bundle_offer_e6YRdw": {
               "type": "shopify://apps/fast-bundle/blocks/bundle_offer/019cfa4a-c71f-79ba-8538-530b4007e72d",
               "settings": {
                 "eyebrow": "Bundle offer",
                 "button_label": "Add to cart",
                 "note": "Discount is applied automatically in cart by the Fast Bundle app.",
-                "accent_color": "#e0644a",
+                "accent_color": "#e11d48",
                 "border_color": "#d6d3d1",
                 "panel_background": "#fffdfa",
-                "button_background": "#3a2f2a",
+                "button_background": "#111827",
                 "button_text_color": "#ffffff"
               }
             },
@@ -300,7 +300,7 @@
                     "text_desc_pill": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>This travel shoe storage bag is a simple way to keep your suitcase neat and your outfits clean. It gives your shoes their own space so dirt and scuffs stay separated from clothing and accessories.</p><p>Designed for everyday travel, the bag is lightweight, easy to pack, and practical for weekend getaways, gym use, and longer vacations.</p>",
+                        "text": "<p>The 9-piece travel packing cube set helps organize your suitcase by category so clothes, shoes, undergarments, and accessories each have a place. Instead of digging through one large bag, you can pack smarter and keep everything easier to find throughout your trip.</p><p>Lightweight materials, breathable panels, and flexible shapes help the cubes fit neatly into carry-ons and checked luggage while keeping your packing routine cleaner and more efficient.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -339,7 +339,7 @@
                     "text_included_pill": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>1 x Travel Shoe Storage Bag<br/><br/>Fits one pair of shoes (size and fit vary by style)</p>",
+                        "text": "<p>1 x Large packing cube<br/><br/>2 x Medium packing cubes<br/><br/>2 x Small packing cubes<br/><br/>1 x Shoe bag<br/><br/>1 x Laundry bag<br/><br/>1 x Underwear pouch<br/><br/>1 x Flat zip accessory pouch</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -369,7 +369,7 @@
                 "accordion_row_shipping_pill": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Shipping Policy",
+                    "heading": "Specifications",
                     "open_by_default": false,
                     "icon": "plane",
                     "width": 20
@@ -378,7 +378,7 @@
                     "text_shipping_pill": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Free Tracked Premium Shipping Worldwide!</p><p>Estimated Delivery Times <strong>7-17 Business days</strong>.</p>",
+                        "text": "<p>9-piece modular organization set<br/><br/>Lightweight woven fabric with breathable mesh panels<br/><br/>Zip closures and carry handles for quick packing and access<br/><br/>Designed to nest inside suitcases, weekender bags, and carry-ons</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -408,7 +408,7 @@
                 "accordion_row_contact_pill": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "How do I contact Glow Aesthetic Gifts?",
+                    "heading": "Features",
                     "open_by_default": false,
                     "icon": "chat_bubble",
                     "width": 20
@@ -417,7 +417,7 @@
                     "text_contact_pill": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>You can contact us at <strong>hello@glowaestheticgifts.com</strong></p>",
+                        "text": "<p>Keeps outfits and essentials separated for faster packing and unpacking<br/><br/>Helps reduce suitcase clutter by assigning a place for each category<br/><br/>Useful for family trips, business travel, weekend getaways, and seasonal storage</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -456,7 +456,7 @@
               "type": "product-description",
               "name": "t:names.product_description",
               "settings": {
-                "text": "{{ closest.product.description }}",
+                "text": "<p>Packing cubes make it easier to organize every part of your suitcase before you leave and keep it that way during the trip. This 9-piece set helps separate clothing, shoes, laundry, and smaller essentials so you spend less time searching and more time moving.</p><p>The lightweight design works well for carry-ons, checked bags, and weekender luggage, giving you a cleaner, more structured way to pack for short getaways or longer travel days.</p>",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "center",
@@ -485,7 +485,7 @@
             "text_features_pill",
             "variant_picker_pill",
             "buy_buttons_pill",
-            "fast_bundle_bundle_offer_JHacUx",
+            "fast_bundle_bundle_offer_e6YRdw",
             "accordion_pill",
             "product_description_pill"
           ]
@@ -643,7 +643,7 @@
         "icons_shape": "none",
         "section_width": "page-width",
         "gap": 28,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48
       }

@@ -3,6 +3,7 @@
 {% liquid
   assign block_settings = block.settings
   assign use_inverse_logo = false
+  assign main_logo = settings.logo
 
   if section.settings.enable_transparent_header_home and template.name == 'index' and section.settings.home_color_scheme == 'inverse'
     assign use_inverse_logo = true
@@ -18,6 +19,14 @@
     else
       assign inverse_logo = settings.logo
     endif
+  endif
+
+  # If the primary logo is not configured, fall back to inverse logo
+  # so sticky header transitions don't downgrade to text fallback.
+  if main_logo == blank and settings.logo_inverse != blank
+    assign main_logo = settings.logo_inverse
+  elsif main_logo == blank and inverse_logo != blank
+    assign main_logo = inverse_logo
   endif
 %}
 
@@ -41,8 +50,8 @@
   {{ block.shopify_attributes }}
 >
   {% liquid
-    assign logo_width = settings.logo_height | times: settings.logo.aspect_ratio | ceil
-    assign logo_width_mobile = settings.logo_height_mobile | times: settings.logo.aspect_ratio | ceil
+    assign logo_width = settings.logo_height | times: main_logo.aspect_ratio | ceil
+    assign logo_width_mobile = settings.logo_height_mobile | times: main_logo.aspect_ratio | ceil
     assign inverse_logo_width = settings.logo_height | times: inverse_logo.aspect_ratio | ceil
     assign inverse_logo_width_mobile = settings.logo_height_mobile | times: inverse_logo.aspect_ratio | ceil
     assign logo_style = '--header-logo-image-width: ' | append: logo_width | append: 'px;' | append: '--header-logo-image-width-mobile: ' | append: logo_width_mobile | append: 'px; --header-logo-image-height: ' | append: settings.logo_height | append: 'px; --header-logo-image-height-mobile: ' | append: settings.logo_height_mobile | append: 'px;'
@@ -54,7 +63,7 @@
     data-testid="header-logo"
   >
     {% render 'image',
-      image: settings.logo,
+      image: main_logo,
       class: 'header-logo__image',
       height: settings.logo_height,
       text_fallback: shop.name,

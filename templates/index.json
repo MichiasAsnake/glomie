@@ -11,42 +11,18 @@
   "sections": {
     "hero_8CHamq": {
       "type": "hero",
-      "blocks": {
-        "promo_box_64mT3V": {
-          "type": "promo-box",
-          "name": "Promo Box",
-          "settings": {
-            "background_color": "#ffffff",
-            "background_opacity": 50,
-            "horizontal_alignment": "right",
-            "vertical_alignment": "center",
-            "width": "custom",
-            "custom_width": 600,
-            "heading": "Travel Light. Pack Smart.",
-            "heading_preset": "h2",
-            "text": "<p>The perfect fit for your shoes and your suitcase. Lightweight, breathable, and ready for your next getaway.</p>",
-            "text_preset": "rte",
-            "button_label": "Shop Now",
-            "button_link": "shopify://products/travel-storage-bag-shoe-storage-bag",
-            "color_scheme": "scheme-58084d4c-a86e-4d0a-855e-a0966e5043f7"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "promo_box_64mT3V"
-      ],
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Packing_Cubes_Hero_Upscaled.png",
+        "image_1": "shopify://shop_images/glomie-hero_7ecccdaf-92e0-4a6d-87d3-98c5949721fe.jpg",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
-        "custom_mobile_media": false,
+        "custom_mobile_media": true,
         "media_type_1_mobile": "image",
+        "image_1_mobile": "shopify://shop_images/mobile-hero-extended.jpg",
         "media_type_2_mobile": "image",
         "link": "",
-        "open_in_new_tab": false,
+        "open_in_new_tab": true,
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
@@ -56,17 +32,165 @@
         "vertical_alignment_flex_direction_column": "center",
         "gap": 16,
         "section_width": "page-width",
-        "section_height": "large",
-        "section_height_custom": 50,
+        "section_height": "custom",
+        "section_height_custom": 88,
+        "custom_mobile_size": false,
+        "section_height_custom_mobile": 50,
         "color_scheme": "scheme-5",
         "toggle_overlay": true,
-        "overlay_color": "#00000026",
-        "overlay_style": "gradient",
-        "gradient_direction": "to bottom",
+        "overlay_color": "#62626203",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
         "blurred_reflection": false,
         "reflection_opacity": 75,
         "padding-block-start": 40,
         "padding-block-end": 10
+      }
+    },
+    "hero_fQMWcE": {
+      "type": "hero",
+      "blocks": {
+        "text_kaUzET": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h3>Stop the Packing Chaos</h3>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_kaUzET"
+      ],
+      "custom_css": [
+        "h3 {position: absolute; top: 40px; left: 50%; transform: translateX(-50%);}",
+        "@media screen and (min-width: 768px) {h3 {top: 20px; padding-top: 40px; font-size: 40px; }}"
+      ],
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/image.png",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": true,
+        "media_type_1_mobile": "image",
+        "image_1_mobile": "shopify://shop_images/mobile.png",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "full-width",
+        "section_height": "custom",
+        "section_height_custom": 65,
+        "custom_mobile_size": true,
+        "section_height_custom_mobile": 56,
+        "color_scheme": "scheme-1",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "hero_aMEJnm": {
+      "type": "hero",
+      "blocks": {
+        "text_FrJWxc": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Stop the Packing Chaos</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 20,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_FrJWxc"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "h2 {position: absolute; top: 50px; left: 50%; transform: translateX(-50%);}"
+      ],
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/image.png",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "image_1_mobile": "shopify://shop_images/mobile.png",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "full-width",
+        "section_height": "custom",
+        "section_height_custom": 59,
+        "custom_mobile_size": false,
+        "section_height_custom_mobile": 50,
+        "color_scheme": "scheme-1",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "product_list_homepage": {
@@ -79,8 +203,8 @@
           "settings": {
             "content_direction": "row",
             "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "center",
             "align_baseline": true,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
@@ -110,11 +234,11 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>Our Products</h3>",
+                "text": "<p><strong>The Glomie Travel Organization Kit</strong></p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h3",
+                "type_preset": "h4",
                 "font": "var(--font-body--family)",
                 "font_size": "",
                 "line_height": "normal",
@@ -186,6 +310,20 @@
               },
               "blocks": {}
             },
+            "swatches_CyQf7w": {
+              "type": "swatches",
+              "name": "t:names.swatches",
+              "settings": {
+                "product_swatches_alignment": "center",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
+            },
             "product_title": {
               "type": "product-title",
               "name": "t:names.product_title",
@@ -193,7 +331,7 @@
                 "subheading": "",
                 "width": "100%",
                 "max_width": "narrow",
-                "alignment": "left",
+                "alignment": "center",
                 "type_preset": "custom",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
@@ -221,7 +359,7 @@
                 "show_tax_info": false,
                 "type_preset": "custom",
                 "width": "100%",
-                "alignment": "left",
+                "alignment": "center",
                 "font": "var(--font-subheading--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -238,6 +376,7 @@
           },
           "block_order": [
             "product_card_gallery",
+            "swatches_CyQf7w",
             "product_title",
             "price"
           ]
@@ -264,108 +403,23 @@
         "padding-block-end": 48
       }
     },
-    "section_Cnyy9N": {
-      "type": "section",
-      "blocks": {
-        "text_PFRBb4": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h2>Subscribe to our emails</h2>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_3YjqcL": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Be the first to know about new collections and special offers. </p>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "paragraph",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "email_signup_9fnftk": {
-          "type": "email-signup",
-          "settings": {
-            "width": "custom",
-            "custom_width": 50,
-            "inherit_color_scheme": false,
-            "color_scheme": "scheme-c5f26204-585d-41f7-ae65-6a532ce07515",
-            "heading": "",
-            "heading_preset": "h3",
-            "border_style": "all",
-            "border_width": 1,
-            "border_radius": 100,
-            "input_type_preset": "paragraph",
-            "style_class": "button-unstyled",
-            "display_type": "arrow",
-            "label": "Sign up",
-            "integrated_button": true,
-            "button_type_preset": "paragraph",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_PFRBb4",
-        "text_3YjqcL",
-        "email_signup_9fnftk"
-      ],
-      "name": "t:names.email_signup",
+    "17736990410ed80702": {
+      "type": "_blocks",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
+        "gap": 12,
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
-        "color_scheme": "scheme-2",
-        "background_media": "image",
+        "color_scheme": "",
+        "background_media": "none",
         "video_position": "cover",
-        "background_image": "shopify://shop_images/Group_9_1d319a58-2e25-48e9-a057-feb3bfe2b4ad.png",
         "background_image_position": "cover",
         "border": "none",
         "border_width": 1,
@@ -375,14 +429,199 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 40,
-        "padding-block-end": 40
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "section_Cnyy9N": {
+      "type": "section",
+      "blocks": {
+        "newsletter_content": {
+          "type": "group",
+          "name": "t:names.content",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 18,
+            "width": "custom",
+            "custom_width": 42,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_PFRBb4": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h3><strong>NEWSLETTER</strong></h3>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_3YjqcL": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Sign up and be the first to hear about product launches, deals, special events, and more.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "email_signup_9fnftk": {
+              "type": "email-signup",
+              "settings": {
+                "width": "custom",
+                "custom_width": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "heading": "",
+                "heading_preset": "h2",
+                "border_style": "all",
+                "border_width": 1,
+                "border_radius": 8,
+                "input_type_preset": "",
+                "style_class": "button-unstyled",
+                "display_type": "arrow",
+                "label": "Sign up",
+                "integrated_button": true,
+                "button_type_preset": "paragraph",
+                "padding-block-start": 8,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_PFRBb4",
+            "text_3YjqcL",
+            "email_signup_9fnftk"
+          ]
+        },
+        "newsletter_image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Packing_Cubes_Hero_Upscaled.png",
+            "link": "",
+            "image_ratio": "landscape",
+            "width": "custom",
+            "custom_width": 58,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 12,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "newsletter_content",
+        "newsletter_image"
+      ],
+      "name": "t:names.email_signup",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 40,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-2",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     }
   },
   "order": [
     "hero_8CHamq",
+    "hero_fQMWcE",
+    "hero_aMEJnm",
     "product_list_homepage",
+    "17736990410ed80702",
     "section_Cnyy9N"
   ]
 }

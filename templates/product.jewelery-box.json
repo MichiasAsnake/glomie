@@ -129,7 +129,7 @@
                   "type": "product-title",
                   "name": "t:names.title",
                   "settings": {
-                    "subheading": "Pack Shoes Separately, Travel Cleaner",
+                    "subheading": "Compact Travel Storage for Jewelry on the Go",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -184,7 +184,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p><strong>Separate and Organized:</strong> Keep shoes away from clothing to protect the rest of your luggage<br/><br/><strong>Travel-Ready Material:</strong> Lightweight, durable fabric helps shield from dust and light moisture<br/><br/><strong>Compact Design:</strong> Folds flat when not in use and fits easily in carry-ons or suitcases<br/><br/><strong>Everyday Convenience:</strong> Ideal for trips, gym shoes, or spare footwear storage at home</p>",
+                "text": "<p><strong>Compact Organization:</strong> Ring rolls, necklace hooks, and divided compartments keep small pieces neatly in place<br/><br/><strong>Travel-Friendly Design:</strong> Structured storage slips easily into carry-ons, totes, and dresser drawers<br/><br/><strong>Soft Interior Protection:</strong> Lined compartments help reduce scratches, tangles, and everyday wear<br/><br/><strong>Easy Everyday Access:</strong> Ideal for trips, weekends away, or keeping favorites organized at home</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -256,16 +256,16 @@
               },
               "block_order": []
             },
-            "fast_bundle_bundle_offer_JHacUx": {
+            "fast_bundle_bundle_offer_LM8bJ8": {
               "type": "shopify://apps/fast-bundle/blocks/bundle_offer/019cfa4a-c71f-79ba-8538-530b4007e72d",
               "settings": {
                 "eyebrow": "Bundle offer",
                 "button_label": "Add to cart",
                 "note": "Discount is applied automatically in cart by the Fast Bundle app.",
-                "accent_color": "#e0644a",
+                "accent_color": "#e11d48",
                 "border_color": "#d6d3d1",
                 "panel_background": "#fffdfa",
-                "button_background": "#3a2f2a",
+                "button_background": "#111827",
                 "button_text_color": "#ffffff"
               }
             },
@@ -300,7 +300,7 @@
                     "text_desc_pill": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>This travel shoe storage bag is a simple way to keep your suitcase neat and your outfits clean. It gives your shoes their own space so dirt and scuffs stay separated from clothing and accessories.</p><p>Designed for everyday travel, the bag is lightweight, easy to pack, and practical for weekend getaways, gym use, and longer vacations.</p>",
+                        "text": "<p>This jewelry box keeps everyday pieces organized, protected, and easy to reach whether you are packing for a trip or tidying your vanity. The compact interior separates rings, earrings, necklaces, and small accessories so you can store more without the usual tangles.</p><p>A structured outer case and soft lining help protect delicate items in transit while the organized layout makes unpacking simple when you arrive.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -339,7 +339,7 @@
                     "text_included_pill": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>1 x Travel Shoe Storage Bag<br/><br/>Fits one pair of shoes (size and fit vary by style)</p>",
+                        "text": "<p>1 x Travel Jewelry Box<br/><br/>Built-in ring rolls, necklace hooks, earring panel, mirror, and divided storage compartments</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -369,7 +369,7 @@
                 "accordion_row_shipping_pill": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Shipping Policy",
+                    "heading": "Details",
                     "open_by_default": false,
                     "icon": "plane",
                     "width": 20
@@ -378,7 +378,7 @@
                     "text_shipping_pill": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Free Tracked Premium Shipping Worldwide!</p><p>Estimated Delivery Times <strong>7-17 Business days</strong>.</p>",
+                        "text": "<p>Compact structured case with a secure zip-around closure<br/><br/>Soft-lined interior designed to help reduce scratches and tangling<br/><br/>Multi-compartment layout for rings, earrings, necklaces, and other small accessories</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -408,7 +408,7 @@
                 "accordion_row_contact_pill": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "How do I contact Glow Aesthetic Gifts?",
+                    "heading": "Features",
                     "open_by_default": false,
                     "icon": "chat_bubble",
                     "width": 20
@@ -417,7 +417,7 @@
                     "text_contact_pill": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>You can contact us at <strong>hello@glowaestheticgifts.com</strong></p>",
+                        "text": "<p>Designed for travel, daily storage, and easy organization<br/><br/>Helps separate delicate pieces so they stay easier to find and wear<br/><br/>Clean, compact profile fits neatly into luggage, handbags, or dresser drawers</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -456,7 +456,7 @@
               "type": "product-description",
               "name": "t:names.product_description",
               "settings": {
-                "text": "{{ closest.product.description }}",
+                "text": "<p>A compact jewelry box is one of the easiest ways to keep small accessories protected while you travel. This one is designed to separate rings, earrings, necklaces, and everyday pieces into dedicated sections so they stay cleaner, easier to find, and ready to wear.</p><p>Whether you are packing light for a weekend trip or organizing your daily collection at home, the structured shape and soft interior help keep everything in place without adding unnecessary bulk.</p>",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "center",
@@ -485,7 +485,7 @@
             "text_features_pill",
             "variant_picker_pill",
             "buy_buttons_pill",
-            "fast_bundle_bundle_offer_JHacUx",
+            "fast_bundle_bundle_offer_LM8bJ8",
             "accordion_pill",
             "product_description_pill"
           ]
@@ -643,7 +643,7 @@
         "icons_shape": "none",
         "section_width": "page-width",
         "gap": 28,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
