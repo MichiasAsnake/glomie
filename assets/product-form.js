@@ -497,6 +497,8 @@ class ProductFormComponent extends Component {
     }
 
     const { variantId } = this.refs;
+    const forceVariantAvailability = this.dataset.forceVariantAvailability === 'true';
+    const variantIsAvailable = Boolean(event.detail.resource) && (forceVariantAvailability || event.detail.resource.available);
 
     // Update the variant ID
     variantId.value = event.detail.resource?.id ?? '';
@@ -507,7 +509,7 @@ class ProductFormComponent extends Component {
     if (!currentAddToCartButtonContainer || (!currentAddToCartButton && !acceleratedCheckoutButtonContainer)) return;
 
     // Update the button state
-    if (event.detail.resource == null || event.detail.resource.available == false) {
+    if (!variantIsAvailable) {
       currentAddToCartButtonContainer.disable();
     } else {
       currentAddToCartButtonContainer.enable();
@@ -519,7 +521,7 @@ class ProductFormComponent extends Component {
     }
 
     if (acceleratedCheckoutButtonContainer) {
-      if (event.detail.resource == null || event.detail.resource.available == false) {
+      if (!variantIsAvailable) {
         acceleratedCheckoutButtonContainer?.setAttribute('hidden', 'true');
       } else {
         acceleratedCheckoutButtonContainer?.removeAttribute('hidden');

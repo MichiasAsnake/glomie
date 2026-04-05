@@ -3,6 +3,18 @@
   assign heading = section.settings.heading
   assign subheading = section.settings.subheading
   assign current_variant = product.selected_or_first_available_variant
+  capture force_variant_availability_value
+    render 'force-variant-availability', product_handle: product.handle
+  endcapture
+  assign force_variant_availability_value = force_variant_availability_value | strip
+  assign force_variant_availability = false
+  if force_variant_availability_value == 'true'
+    assign force_variant_availability = true
+  endif
+  assign current_variant_available = current_variant.available
+  if force_variant_availability
+    assign current_variant_available = true
+  endif
   assign show_currency_code = settings.currency_code_enabled_product_pages
 
   if heading == blank
@@ -74,9 +86,9 @@
       {% if should_render %}
         {% liquid
           assign submit_disabled = false
-          if offer_type == 'volume_discount' and current_variant.available != true
+          if offer_type == 'volume_discount' and current_variant_available != true
             assign submit_disabled = true
-          elsif offer_type == 'fixed_bundle' and section.settings.include_current_product and current_variant.available != true
+          elsif offer_type == 'fixed_bundle' and section.settings.include_current_product and current_variant_available != true
             assign submit_disabled = true
           endif
         %}
@@ -86,11 +98,12 @@
           data-section-id="{{ section.id }}"
           data-product-id="{{ product.id }}"
           data-offer-type="{{ offer_type }}"
+          data-force-variant-availability="{{ force_variant_availability }}"
           data-currency-code="{{ cart.currency.iso_code }}"
           data-show-currency-code="{{ show_currency_code }}"
           data-current-variant-id="{{ current_variant.id }}"
           data-current-variant-price="{{ current_variant.price }}"
-          data-current-variant-available="{{ current_variant.available }}"
+          data-current-variant-available="{{ current_variant_available }}"
           data-current-variant-compare-at-price="{{ current_variant.compare_at_price | default: 0 }}"
           data-fixed-discount-percent="{{ section.settings.fixed_discount_percentage }}"
           data-include-current-product="{{ section.settings.include_current_product }}"
@@ -146,7 +159,7 @@
                     data-product-title="{{ product.title | escape }}"
                     data-variant-id="{{ current_variant.id }}"
                     data-price="{{ current_variant.price }}"
-                    data-available="{{ current_variant.available }}"
+                    data-available="{{ current_variant_available }}"
                   >
                     <div class="product-bundle-offer__item-media">
                       {% if current_image %}

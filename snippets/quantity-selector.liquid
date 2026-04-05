@@ -17,6 +17,14 @@
   else
     assign variant = product.selected_or_first_available_variant
   endif
+  capture force_variant_availability_value
+    render 'force-variant-availability', product_handle: product.handle
+  endcapture
+  assign force_variant_availability_value = force_variant_availability_value | strip
+  assign force_variant_availability = false
+  if force_variant_availability_value == 'true'
+    assign force_variant_availability = true
+  endif
   assign component_name = 'quantity-selector-component'
   if line_index != null
     assign component_name = 'cart-quantity-selector-component'
@@ -76,7 +84,7 @@
         max="{{ variant.quantity_rule.max }}"
       {% endif %}
       step="{{ variant.quantity_rule.increment | default: 1 }}"
-      {% if can_update_quantity == false or variant.available == false %}
+      {% if can_update_quantity == false or variant.available == false and force_variant_availability == false %}
         disabled
       {% endif %}
     >

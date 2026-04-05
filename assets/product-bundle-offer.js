@@ -9,6 +9,7 @@ class ProductBundleOffer extends HTMLElement {
     this.showCurrencyCode = this.dataset.showCurrencyCode === 'true';
     this.fixedDiscountPercent = Number(this.dataset.fixedDiscountPercent || 0);
     this.includeCurrentProduct = this.dataset.includeCurrentProduct === 'true';
+    this.forceVariantAvailability = this.dataset.forceVariantAvailability === 'true';
     this.heading = this.dataset.heading || 'Bundle offer';
 
     this.status = this.querySelector('[data-offer-status]');
@@ -23,7 +24,7 @@ class ProductBundleOffer extends HTMLElement {
     this.currentVariant = {
       id: Number(this.dataset.currentVariantId || 0),
       price: Number(this.dataset.currentVariantPrice || 0),
-      available: this.dataset.currentVariantAvailable === 'true',
+      available: this.forceVariantAvailability || this.dataset.currentVariantAvailable === 'true',
       compareAtPrice: Number(this.dataset.currentVariantCompareAtPrice || 0),
       title: this.currentVariantTitle?.textContent?.trim() || '',
     };
@@ -55,7 +56,7 @@ class ProductBundleOffer extends HTMLElement {
     this.currentVariant = {
       id: Number(variant.id || 0),
       price: Number(variant.price || 0),
-      available: Boolean(variant.available),
+      available: this.forceVariantAvailability || Boolean(variant.available),
       compareAtPrice: Number(variant.compare_at_price || 0),
       title: variant.title === 'Default Title' ? '' : variant.title || '',
     };

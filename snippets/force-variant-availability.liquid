@@ -1,0 +1,11 @@
+{%- liquid
+  assign target_product_handle = product_handle | default: ''
+  assign force_variant_availability = false
+
+  case target_product_handle
+    when 'jewelry-storage-box-portable-travel-jewelry', 'travel-storage-bag-shoe-storage-bag'
+      assign force_variant_availability = true
+  endcase
+
+  echo force_variant_availability
+-%}

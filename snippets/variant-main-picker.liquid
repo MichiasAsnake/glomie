@@ -6,6 +6,12 @@
 {%- enddoc -%}
 
 {% assign block_settings = block.settings %}
+{% capture force_variant_availability_value %}{% render 'force-variant-availability', product_handle: product_resource.handle %}{% endcapture %}
+{% assign force_variant_availability_value = force_variant_availability_value | strip %}
+{% assign force_variant_availability = false %}
+{% if force_variant_availability_value == 'true' %}
+  {% assign force_variant_availability = true %}
+{% endif %}
 
 {% unless product_resource.has_only_default_variant %}
   {% liquid
@@ -23,6 +29,7 @@
     data-product-id="{{ product_resource.id }}"
     data-block-id="{{ block.id }}"
     data-product-url="{{ product_resource.url }}"
+    data-force-variant-availability="{{ force_variant_availability }}"
     ref="mainVariantPicker"
     {% if product.id == product_resource.id %}
       data-template-product-match="true"
@@ -68,6 +75,12 @@
               {%- endif %}
             </legend>
             {%- for product_option_value in product_option.values -%}
+              {%- liquid
+                assign option_value_available = product_option_value.available
+                if force_variant_availability
+                  assign option_value_available = true
+                endif
+              -%}
               {% if product_option_value.size > longest_value and option_id_attribute %}
                 {% assign longest_value = product_option_value.size %}
               {% endif %}
@@ -79,7 +92,7 @@
                   name="{{ product_option.name | escape }}-{{ block.id }}-{{ product_resource.id }}"
                   value="{{ product_option_value | escape }}"
                   aria-label="{{ product_option_value.name }}"
-                  {% if product_option_value.available == false %}
+                  {% if option_value_available == false %}
                     aria-disabled="true"
                   {% endif %}
                   data-previous-checked="false"
@@ -87,7 +100,7 @@
                   data-input-index="{{ forloop.index0 }}"
                   data-input-id="{{ product_option.position }}-{{ forloop.index0 }}"
                   data-option-value-id="{{ product_option_value.id }}"
-                  data-option-available="{{ product_option_value.available }}"
+                  data-option-available="{{ option_value_available }}"
                   data-connected-product-url="{{ product_option_value.product_url }}"
                   {% if product_option_value.variant.id %}
                     data-variant-id="{{ product_option_value.variant.id }}"
@@ -116,7 +129,7 @@
                     mode: 'unscaled'
                   %}
                 {% else %}
-                  {% if product_option_value.available == true %}
+                  {% if option_value_available == true %}
                     <span class="variant-option__button-label__pill"></span>
                   {% endif %}
                   <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
@@ -163,6 +176,12 @@
                 class="variant-option__select"
               >
                 {%- for product_option_value in product_option.values -%}
+                  {%- liquid
+                    assign option_value_available = product_option_value.available
+                    if force_variant_availability
+                      assign option_value_available = true
+                    endif
+                  -%}
                   <option
                     value="{{ product_option_value | escape }}"
                     data-input-id="{{ product_option.position }}-{{ forloop.index0 }}"
@@ -173,7 +192,7 @@
                       selected="selected"
                     {% endif %}
                   >
-                    {% if product_option_value.available == false %}
+                    {% if option_value_available == false %}
                       {{ product_option_value | escape }} - {{ 'content.unavailable' | t }}
                     {% else %}
                       {{ product_option_value | escape }}
