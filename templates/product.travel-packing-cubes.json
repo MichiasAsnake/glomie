@@ -456,7 +456,7 @@
               "type": "product-description",
               "name": "t:names.product_description",
               "settings": {
-                "text": "<p>Packing cubes make it easier to organize every part of your suitcase before you leave and keep it that way during the trip. This 9-piece set helps separate clothing, shoes, laundry, and smaller essentials so you spend less time searching and more time moving.</p><p>The lightweight design works well for carry-ons, checked bags, and weekender luggage, giving you a cleaner, more structured way to pack for short getaways or longer travel days.</p>",
+                "text": "<p></p>{{ closest.product.description }}",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "center",
