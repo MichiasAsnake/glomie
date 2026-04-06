@@ -410,10 +410,10 @@
           "type": "shopify://apps/fast-bundle/blocks/home_bundle_offer/019cfa4a-c71f-79ba-8538-530b4007e72d",
           "settings": {
             "featured_product": "travel-packing-cubes-9-piece-set",
-            "eyebrow": "The Starter Pack",
-            "home_title": "Everything you need. Nothing you don't.",
+            "eyebrow": "buy all with 20% off",
+            "home_title": "The Full System",
             "home_body": "Your first trip with Glomie starts here. The 9-piece packing cube set keeps your clothes organized and wrinkle-free, while the shoe bag keeps everything else clean. Two essentials, one price — and 20% off when you grab them together.",
-            "benefit_one": "Bundle includes:",
+            "benefit_one": "",
             "benefit_two": "9Pcs Travel Packing Cubes",
             "benefit_three": "Travel Shoe Bag",
             "button_label": "Add bundle to cart",
