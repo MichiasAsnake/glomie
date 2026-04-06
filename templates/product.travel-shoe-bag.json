@@ -259,7 +259,7 @@
             "fast_bundle_bundle_offer_JHacUx": {
               "type": "shopify://apps/fast-bundle/blocks/bundle_offer/019cfa4a-c71f-79ba-8538-530b4007e72d",
               "settings": {
-                "eyebrow": "Bundle offer",
+                "eyebrow": "save up to 15% off",
                 "button_label": "Add to cart",
                 "note": "Discount is applied automatically in cart by the Fast Bundle app.",
                 "accent_color": "#e0644a",
