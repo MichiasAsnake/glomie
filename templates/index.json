@@ -403,6 +403,62 @@
         "padding-block-end": 48
       }
     },
+    "1775437279ccffd176": {
+      "type": "_blocks",
+      "blocks": {
+        "fast_bundle_home_bundle_offer_iVHhri": {
+          "type": "shopify://apps/fast-bundle/blocks/home_bundle_offer/019cfa4a-c71f-79ba-8538-530b4007e72d",
+          "settings": {
+            "featured_product": "travel-packing-cubes-9-piece-set",
+            "eyebrow": "Homepage bundle",
+            "home_title": "",
+            "home_body": "",
+            "benefit_one": "Feature a hero product and its bundled add-ons.",
+            "benefit_two": "Let shoppers choose variants before they add the bundle.",
+            "benefit_three": "Reuse the offer you already configured in Fast Bundle.",
+            "button_label": "Add bundle to cart",
+            "note": "Discount is applied automatically in cart by the Fast Bundle app.",
+            "accent_color": "#c2410c",
+            "surface_start": "#fff7ed",
+            "surface_end": "#fffbeb",
+            "panel_background": "#fffdf8",
+            "border_color": "#fdba74",
+            "button_background": "#1c1917",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "fast_bundle_home_bundle_offer_iVHhri"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "17736990410ed80702": {
       "type": "_blocks",
       "settings": {
@@ -621,6 +677,7 @@
     "hero_fQMWcE",
     "hero_aMEJnm",
     "product_list_homepage",
+    "1775437279ccffd176",
     "17736990410ed80702",
     "section_Cnyy9N"
   ]
