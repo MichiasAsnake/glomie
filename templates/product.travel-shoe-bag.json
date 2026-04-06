@@ -261,7 +261,7 @@
               "settings": {
                 "eyebrow": "save up to 15% off",
                 "button_label": "Add to cart",
-                "note": "Discount is applied automatically in cart by the Fast Bundle app.",
+                "note": "Discount is applied automatically in cart.",
                 "accent_color": "#e0644a",
                 "border_color": "#d6d3d1",
                 "panel_background": "#fffdfa",
