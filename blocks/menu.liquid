@@ -5,70 +5,47 @@
   assign menu = block_settings.menu
   assign heading = block_settings.heading
   assign color_scheme = block_settings.color_scheme
-  assign show_as_accordion = block_settings.show_as_accordion
-  if show_as_accordion == true and block_settings.accordion_dividers == true
+  if block_settings.accordion_dividers == true
     assign dividers_enabled = true
   endif
 %}
 
 {% if menu != blank or heading != blank %}
-  <accordion-custom
+  <div
     class="
       menu
-      {% if show_as_accordion == true %} menu--accordion menu--{{ block_settings.accordion_icon }}{% endif %}
       {% if dividers_enabled == true %} menu--dividers{% endif %}
+      {% if block_settings.inherit_color_scheme == false %} color-{{ color_scheme }}{% endif %}
     "
-    data-disable-on-desktop="true"
-    open-by-default-on-desktop
-    {% if show_as_accordion == false %}
-      data-disable-on-mobile="true"
-      open-by-default-on-mobile
-    {% endif %}
+    {{ block.shopify_attributes }}
   >
-    <details
+    <div
       class="
-        menu__details
+        menu__content
         spacing-style
-        {% if block_settings.inherit_color_scheme == false %} color-{{ color_scheme }}{% endif %}
       "
-      data-testid="menu-details"
       style="
         --spacing--size: {{ block_settings.menu_spacing }}px;
         {% render 'spacing-style', settings: block_settings %}
       "
-      {% if show_as_accordion == false %}
-        open
-      {% endif %}
-      {{ block.shopify_attributes }}
     >
-      <summary class="menu__heading{% if heading == blank %} menu__heading--empty{% endif %} {{ block_settings.heading_preset }}">
-        <span class="menu__heading__default">{{ heading }}</span>
-        <span class="menu__heading__accordion">
-          {{ heading | default: menu.title }}
-          <span class="menu__heading__toggle svg-wrapper icon-caret icon-animated">
-            {{- 'icon-caret.svg' | inline_asset_content -}}
-          </span>
-          <span class="menu__heading__toggle svg-wrapper icon-plus">
-            {{- 'icon-plus.svg' | inline_asset_content -}}
-          </span>
-        </span>
-      </summary>
-
-      <div class="details-content">
-        {% if menu %}
-          <ul class="list-unstyled">
-            {% for link in menu.links %}
-              <li class="menu__item {{ block_settings.link_preset }}">
-                <a href="{{ link.url }}">
-                  {{ link.title }}
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
-        {% endif %}
+      <div class="menu__heading{% if heading == blank %} menu__heading--empty{% endif %} {{ block_settings.heading_preset }}">
+        {{ heading | default: menu.title }}
       </div>
-    </details>
-  </accordion-custom>
+
+      {% if menu %}
+        <ul class="menu__list list-unstyled">
+          {% for link in menu.links %}
+            <li class="menu__item {{ block_settings.link_preset }}">
+              <a href="{{ link.url }}">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
 {% endif %}
 
 {% stylesheet %}
@@ -76,60 +53,47 @@
     width: 100%;
   }
 
-  .menu:not(:has(.menu__heading--empty)) .details-content {
+  .menu__content {
+    width: 100%;
+  }
+
+  .menu:not(:has(.menu__heading--empty)) .menu__list {
     margin-block-start: var(--spacing--size);
   }
 
+  .menu__list {
+    display: grid;
+    gap: var(--spacing--size);
+  }
+
   .menu__item + .menu__item {
-    margin-block-start: var(--spacing--size);
+    margin-block-start: 0;
   }
 
   .menu .menu__heading--empty {
     display: none;
   }
 
-  .menu__heading__default {
-    display: contents;
+  .menu__heading {
+    margin: 0;
   }
 
-  .menu__heading__accordion {
-    display: none;
+  .menu__item a {
+    text-decoration: none;
+  }
+
+  .menu__item a:hover {
+    text-decoration: underline;
   }
 
   @media screen and (max-width: 749px) {
-    /* Always show the fallback heading on mobile when accordion is enabled */
-    .menu--accordion .menu__heading--empty {
-      display: flex;
-    }
-
-    .menu--accordion .menu__heading__accordion {
-      display: contents;
-    }
-
-    .menu--accordion .menu__heading__default {
-      display: none;
-    }
-
-    .menu--accordion .details-content {
-      margin-block-start: var(--spacing--size);
-    }
-
-    .menu--accordion .menu__details {
-      padding-inline: 0;
-    }
-
-    .menu--dividers .menu__details {
+    .menu--dividers .menu__content {
       border-block-end: var(--style-border-width) solid var(--color-border);
     }
 
-    .menu--dividers .details-content {
+    .menu--dividers .menu__content {
       padding-block-end: var(--padding-sm);
     }
-  }
-
-  .menu--caret .icon-plus,
-  .menu--plus .icon-caret {
-    display: none;
   }
 {% endstylesheet %}
 
