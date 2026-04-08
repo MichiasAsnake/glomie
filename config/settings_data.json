@@ -79,7 +79,7 @@
     "variant_swatch_radius": 100,
     "variant_swatch_border_style": "solid",
     "variant_swatch_border_width": 0.5,
-    "variant_swatch_border_opacity": 71,
+    "variant_swatch_border_opacity": 100,
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
