@@ -85,19 +85,6 @@
               },
               "blocks": {}
             },
-            "product_inventory_pill": {
-              "type": "product-inventory",
-              "name": "t:names.product_inventory",
-              "settings": {
-                "inventory_threshold": 10,
-                "show_inventory_quantity": true,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
             "group_header_pill": {
               "type": "group",
               "name": "t:names.header",
@@ -146,7 +133,7 @@
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
-                    "type_preset": "h3",
+                    "type_preset": "h4",
                     "font": "var(--font-body--family)",
                     "font_size": "1rem",
                     "line_height": "normal",
@@ -431,7 +418,6 @@
           },
           "block_order": [
             "review_C9MXth",
-            "product_inventory_pill",
             "group_header_pill",
             "variant_picker_pill",
             "buy_buttons_pill",
