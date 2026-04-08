@@ -278,7 +278,7 @@
                 "accordion_row_description": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Product Description",
+                    "heading": "DESCRIPTION",
                     "open_by_default": false,
                     "icon": "star",
                     "width": 12
@@ -317,16 +317,16 @@
                 "accordion_row_whats_included": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Whats Included?",
+                    "heading": "DETAILS & SPECIFICATIONS",
                     "open_by_default": false,
-                    "icon": "question_mark",
+                    "icon": "clipboard",
                     "width": 20
                   },
                   "blocks": {
                     "text_included": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>🌷 Tulips, Leaves, and Stone<br/><br/>🌷 Mirror and Decorative strip<br/><br/>🌷 Light String<br/><br/>🌷 Glue Stick<br/><br/>🌷 Battery</p>",
+                        "text": "<p><strong>What's included</strong></p><p>🌷 Tulips, Leaves, and Stone<br/><br/>🌷 Mirror and Decorative strip<br/><br/>🌷 Light String<br/><br/>🌷 Glue Stick<br/><br/>🌷 Battery</p><p><strong>Details & specifications</strong></p><p>🪞✨ <strong>Magical 2-in-1:</strong> A stylish mirror that hides a secret glowing garden <br/><br/>♾️🌷 <strong>Infinite Glow:</strong> Special mirrors create a 3D \"flower sea\" effect that goes on for miles<br/><br/>🌙☁️ <strong>Cozy Vibes:</strong> Soft LED light creates the perfect romantic atmosphere for any room<br/><br/>🎁🎀 <strong>Thoughtful & Unique:</strong> A one-of-a-kind piece she won't find anywhere else</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -356,9 +356,9 @@
                 "accordion_row_shipping": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Shipping Policy",
+                    "heading": "SHIPPING & RETURNS",
                     "open_by_default": false,
-                    "icon": "plane",
+                    "icon": "return",
                     "width": 20
                   },
                   "blocks": {
@@ -391,52 +391,12 @@
                   "block_order": [
                     "text_shipping"
                   ]
-                },
-                "accordion_row_contact": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "How do I contact Glow Aesthetic Gifts?",
-                    "open_by_default": false,
-                    "icon": "chat_bubble",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "text_contact": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>You can contact us at <strong>hello@glowaestheticgifts.com</strong></p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_contact"
-                  ]
                 }
               },
               "block_order": [
                 "accordion_row_description",
                 "accordion_row_whats_included",
-                "accordion_row_shipping",
-                "accordion_row_contact"
+                "accordion_row_shipping"
               ]
             },
             "product_description_pdp": {

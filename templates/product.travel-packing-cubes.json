@@ -328,7 +328,7 @@
                     "text_included_pill": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>1 x Large packing cube<br/><br/>2 x Medium packing cubes<br/><br/>2 x Small packing cubes<br/><br/>1 x Shoe bag<br/><br/>1 x Laundry bag<br/><br/>1 x Underwear pouch<br/><br/>1 x Flat zip accessory pouch</p>",
+                        "text": "<p><strong>What's included</strong></p><p>1 x Large packing cube<br/><br/>2 x Medium packing cubes<br/><br/>2 x Small packing cubes<br/><br/>1 x Shoe bag<br/><br/>1 x Laundry bag<br/><br/>1 x Underwear pouch<br/><br/>1 x Flat zip accessory pouch</p><p><strong>Details & specifications</strong></p><p>9-piece modular organization set<br/><br/>Lightweight woven fabric with breathable mesh panels<br/><br/>Zip closures and carry handles for quick packing and access<br/><br/>Designed to nest inside suitcases, weekender bags, and carry-ons</p><p><strong>Highlights</strong></p><p>Keeps outfits and essentials separated for faster packing and unpacking<br/><br/>Helps reduce suitcase clutter by assigning a place for each category<br/><br/>Useful for family trips, business travel, weekend getaways, and seasonal storage</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -393,53 +393,12 @@
                   "block_order": [
                     "text_shipping_pill"
                   ]
-                },
-                "accordion_row_contact_pill": {
-                  "type": "_accordion-row",
-                  "disabled": true,
-                  "settings": {
-                    "heading": "Features",
-                    "open_by_default": false,
-                    "icon": "chat_bubble",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "text_contact_pill": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Keeps outfits and essentials separated for faster packing and unpacking<br/><br/>Helps reduce suitcase clutter by assigning a place for each category<br/><br/>Useful for family trips, business travel, weekend getaways, and seasonal storage</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_contact_pill"
-                  ]
                 }
               },
               "block_order": [
                 "accordion_row_description_pill",
                 "accordion_row_whats_included_pill",
-                "accordion_row_shipping_pill",
-                "accordion_row_contact_pill"
+                "accordion_row_shipping_pill"
               ]
             },
             "product_description_pill": {

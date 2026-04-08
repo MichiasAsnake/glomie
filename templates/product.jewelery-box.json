@@ -291,7 +291,7 @@
                 "accordion_row_description_pill": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Product Description",
+                    "heading": "DESCRIPTION",
                     "open_by_default": false,
                     "icon": "star",
                     "width": 12
@@ -330,16 +330,16 @@
                 "accordion_row_whats_included_pill": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "What's Included?",
+                    "heading": "DETAILS & SPECIFICATIONS",
                     "open_by_default": false,
-                    "icon": "question_mark",
+                    "icon": "clipboard",
                     "width": 20
                   },
                   "blocks": {
                     "text_included_pill": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>1 x Travel Jewelry Box<br/><br/>Built-in ring rolls, necklace hooks, earring panel, mirror, and divided storage compartments</p>",
+                        "text": "<p><strong>What's included</strong></p><p>1 x Travel Jewelry Box<br/><br/>Built-in ring rolls, necklace hooks, earring panel, mirror, and divided storage compartments</p><p><strong>Details & specifications</strong></p><p>Compact structured case with a secure zip-around closure<br/><br/>Soft-lined interior designed to help reduce scratches and tangling<br/><br/>Multi-compartment layout for rings, earrings, necklaces, and other small accessories</p><p><strong>Highlights</strong></p><p>Designed for travel, daily storage, and easy organization<br/><br/>Helps separate delicate pieces so they stay easier to find and wear<br/><br/>Clean, compact profile fits neatly into luggage, handbags, or dresser drawers</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -369,9 +369,9 @@
                 "accordion_row_shipping_pill": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Details",
+                    "heading": "SHIPPING & RETURNS",
                     "open_by_default": false,
-                    "icon": "plane",
+                    "icon": "return",
                     "width": 20
                   },
                   "blocks": {
@@ -404,52 +404,12 @@
                   "block_order": [
                     "text_shipping_pill"
                   ]
-                },
-                "accordion_row_contact_pill": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Features",
-                    "open_by_default": false,
-                    "icon": "chat_bubble",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "text_contact_pill": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Designed for travel, daily storage, and easy organization<br/><br/>Helps separate delicate pieces so they stay easier to find and wear<br/><br/>Clean, compact profile fits neatly into luggage, handbags, or dresser drawers</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_contact_pill"
-                  ]
                 }
               },
               "block_order": [
                 "accordion_row_description_pill",
                 "accordion_row_whats_included_pill",
-                "accordion_row_shipping_pill",
-                "accordion_row_contact_pill"
+                "accordion_row_shipping_pill"
               ]
             },
             "product_description_pill": {

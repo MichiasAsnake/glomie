@@ -1,5 +1,6 @@
 
 {% assign block_settings = block.settings %}
+{% assign normalized_heading = block_settings.heading | strip | upcase %}
 
 <accordion-custom
   {% if block_settings.open_by_default %}
@@ -32,7 +33,11 @@
     </summary>
 
     <div class="details-content">
-      {% content_for 'blocks' %}
+      {% if normalized_heading == 'SHIPPING & RETURNS' %}
+        {% render 'product-policy-accordion' %}
+      {% else %}
+        {% content_for 'blocks' %}
+      {% endif %}
     </div>
   </details>
 </accordion-custom>

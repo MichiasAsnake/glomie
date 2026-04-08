@@ -1,0 +1,24 @@
+{% assign has_shipping_policy = shop.shipping_policy != blank and shop.shipping_policy.body != blank %}
+{% assign has_refund_policy = shop.refund_policy != blank and shop.refund_policy.body != blank %}
+
+<div class="product-policy-accordion rte">
+  {% if has_shipping_policy %}
+    <p><strong>{{ shop.shipping_policy.title | default: 'Shipping' }}</strong></p>
+    {{ shop.shipping_policy.body }}
+  {% else %}
+    <p>
+      <strong>Shipping</strong><br>
+      Shipping rates and delivery timing are shown at checkout.
+    </p>
+  {% endif %}
+
+  {% if has_refund_policy %}
+    <p><strong>{{ shop.refund_policy.title | default: 'Returns' }}</strong></p>
+    {{ shop.refund_policy.body }}
+  {% else %}
+    <p>
+      <strong>Returns</strong><br>
+      Please refer to your store refund policy for return eligibility, windows, and exceptions.
+    </p>
+  {% endif %}
+</div>

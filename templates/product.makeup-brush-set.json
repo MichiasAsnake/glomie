@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -269,7 +278,7 @@
                 "accordion_row_description_pill": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Product Description",
+                    "heading": "DESCRIPTION",
                     "open_by_default": false,
                     "icon": "star",
                     "width": 12
@@ -308,16 +317,16 @@
                 "accordion_row_whats_included_pill": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "What's Included?",
+                    "heading": "DETAILS & SPECIFICATIONS",
                     "open_by_default": false,
-                    "icon": "question_mark",
+                    "icon": "clipboard",
                     "width": 20
                   },
                   "blocks": {
                     "text_included_pill": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>1 x Makeup Brush Set<br/><br/>Brush types depend on selected variant/style</p>",
+                        "text": "<p><strong>What's included</strong></p><p>1 x Makeup Brush Set<br/><br/>Brush types depend on selected variant/style</p><p><strong>Details & specifications</strong></p><p><strong>Complete Brush Set:</strong> Includes essential brushes for powder, blush, eyeshadow, and everyday looks<br/><br/><strong>Soft, Skin-Friendly Bristles:</strong> Smooth application for blending, buffing, and precise detail work<br/><br/><strong>Portable Beauty Essential:</strong> Easy to carry for home use, travel, and quick touch-ups<br/><br/><strong>Beginner to Pro Friendly:</strong> Great for daily makeup routines and gift giving</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -347,9 +356,9 @@
                 "accordion_row_shipping_pill": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Shipping Policy",
+                    "heading": "SHIPPING & RETURNS",
                     "open_by_default": false,
-                    "icon": "plane",
+                    "icon": "return",
                     "width": 20
                   },
                   "blocks": {
@@ -382,52 +391,12 @@
                   "block_order": [
                     "text_shipping_pill"
                   ]
-                },
-                "accordion_row_contact_pill": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "How do I contact Glow Aesthetic Gifts?",
-                    "open_by_default": false,
-                    "icon": "chat_bubble",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "text_contact_pill": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>You can contact us at <strong>hello@glowaestheticgifts.com</strong></p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_contact_pill"
-                  ]
                 }
               },
               "block_order": [
                 "accordion_row_description_pill",
                 "accordion_row_whats_included_pill",
-                "accordion_row_shipping_pill",
-                "accordion_row_contact_pill"
+                "accordion_row_shipping_pill"
               ]
             },
             "product_description_pill": {
