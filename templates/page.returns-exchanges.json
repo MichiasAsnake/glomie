@@ -12,36 +12,6 @@
     "main": {
       "type": "main-returns-exchanges",
       "blocks": {
-        "card_returns": {
-          "type": "action_card",
-          "settings": {
-            "icon_style": "returns",
-            "title": "Returns & Exchanges",
-            "body": "Start a return or exchange.",
-            "link_label": "Start a return or exchange",
-            "link_url": ""
-          }
-        },
-        "card_quality": {
-          "type": "action_card",
-          "settings": {
-            "icon_style": "quality",
-            "title": "Our Quality Guarantee",
-            "body": "Submit a claim.",
-            "link_label": "Submit a claim",
-            "link_url": ""
-          }
-        },
-        "card_international": {
-          "type": "action_card",
-          "settings": {
-            "icon_style": "international",
-            "title": "International Customers",
-            "body": "Start a return or exchange.",
-            "link_label": "International returns",
-            "link_url": ""
-          }
-        },
         "faq_policy": {
           "type": "faq_item",
           "settings": {
@@ -65,9 +35,6 @@
         }
       },
       "block_order": [
-        "card_returns",
-        "card_quality",
-        "card_international",
         "faq_policy",
         "faq_exchange",
         "faq_refund"
