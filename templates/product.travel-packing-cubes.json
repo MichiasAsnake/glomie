@@ -435,7 +435,7 @@
         "desktop_media_position": "left",
         "equal_columns": false,
         "custom_desktop_column_widths": true,
-        "media_column_width": 80,
+        "media_column_width": 70,
         "details_column_width": 50,
         "limit_details_width": false,
         "gap": 28,
