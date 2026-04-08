@@ -151,14 +151,6 @@
                   },
                   "blocks": {}
                 },
-                "custom_liquid_8eEM7M": {
-                  "type": "custom-liquid",
-                  "name": "t:names.custom_liquid",
-                  "settings": {
-                    "custom_liquid": "<hr style=\"border: 0; border-top: 1px solid #000000; margin: 20px 0; display: block !important;\">"
-                  },
-                  "blocks": {}
-                },
                 "price_pill": {
                   "type": "price",
                   "name": "t:names.product_price",
@@ -181,12 +173,20 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
+                },
+                "custom_liquid_8eEM7M": {
+                  "type": "custom-liquid",
+                  "name": "t:names.custom_liquid",
+                  "settings": {
+                    "custom_liquid": "<hr style=\"border: 0; border-top: 1px solid #000000; margin: 20px 0; display: block !important;\">"
+                  },
+                  "blocks": {}
                 }
               },
               "block_order": [
                 "product_title_pill",
-                "custom_liquid_8eEM7M",
-                "price_pill"
+                "price_pill",
+                "custom_liquid_8eEM7M"
               ]
             },
             "variant_picker_pill": {
