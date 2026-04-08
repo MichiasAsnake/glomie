@@ -60,11 +60,25 @@
   .accordion .details__header {
     font-family: var(--summary-font-family);
     font-style: var(--summary-font-style);
-    font-weight: var(--summary-font-weight);
-    font-size: var(--summary-font-size);
-    line-height: var(--summary-font-line-height);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.4;
     text-transform: var(--summary-font-case);
     min-height: var(--minimum-touch-target);
+  }
+
+  .accordion .details-content,
+  .accordion .details-content .text-block,
+  .accordion .details-content .text-block > *,
+  .accordion .details-content .product-policy-accordion,
+  .accordion .details-content .product-policy-accordion a {
+    font-size: 14px !important;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .accordion .details-content strong {
+    font-weight: 700;
   }
 {% endstylesheet %}
 
