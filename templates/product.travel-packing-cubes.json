@@ -20,8 +20,8 @@
           "type": "_product-media-gallery",
           "static": true,
           "settings": {
-            "media_presentation": "slideshow",
-            "media_columns": "one",
+            "media_presentation": "grid",
+            "media_columns": "two",
             "image_gap": 4,
             "large_first_image": false,
             "icons_style": "chevron",
@@ -30,10 +30,10 @@
             "thumbnail_position": "bottom",
             "thumbnail_width": 72,
             "thumbnail_radius": 10,
-            "aspect_ratio": "1",
+            "aspect_ratio": "1/1.25",
             "constrain_to_viewport": true,
             "media_fit": "contain",
-            "media_radius": 15,
+            "media_radius": 1,
             "extend_media": false,
             "zoom": false,
             "video_loop": false,
@@ -72,6 +72,19 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "review_C9MXth": {
+              "type": "review",
+              "name": "t:names.product_review_stars",
+              "settings": {
+                "stars_style": "shaded",
+                "show_number": true,
+                "rating_color": "primary",
+                "type_preset": "paragraph",
+                "width": "100%",
+                "alignment": "left"
+              },
+              "blocks": {}
+            },
             "product_inventory_pill": {
               "type": "product-inventory",
               "name": "t:names.product_inventory",
@@ -480,6 +493,7 @@
             }
           },
           "block_order": [
+            "review_C9MXth",
             "product_inventory_pill",
             "group_header_pill",
             "text_features_pill",
