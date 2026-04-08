@@ -280,9 +280,9 @@
                 "accordion_row_description_pill": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Product Description",
+                    "heading": "DESCRIPTION",
                     "open_by_default": false,
-                    "icon": "star",
+                    "icon": "none",
                     "width": 12
                   },
                   "blocks": {
@@ -319,9 +319,9 @@
                 "accordion_row_whats_included_pill": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "What's Included?",
+                    "heading": "DETAILS & SPECIFICATIONS",
                     "open_by_default": false,
-                    "icon": "question_mark",
+                    "icon": "none",
                     "width": 20
                   },
                   "blocks": {
@@ -358,9 +358,9 @@
                 "accordion_row_shipping_pill": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Specifications",
+                    "heading": "SHIPPING & RETURNS",
                     "open_by_default": false,
-                    "icon": "plane",
+                    "icon": "none",
                     "width": 20
                   },
                   "blocks": {
@@ -396,6 +396,7 @@
                 },
                 "accordion_row_contact_pill": {
                   "type": "_accordion-row",
+                  "disabled": true,
                   "settings": {
                     "heading": "Features",
                     "open_by_default": false,
@@ -444,6 +445,7 @@
             "product_description_pill": {
               "type": "product-description",
               "name": "t:names.product_description",
+              "disabled": true,
               "settings": {
                 "text": "<p></p>{{ closest.product.description }}",
                 "width": "100%",
