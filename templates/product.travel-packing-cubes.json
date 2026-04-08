@@ -433,7 +433,10 @@
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
-        "equal_columns": true,
+        "equal_columns": false,
+        "custom_desktop_column_widths": true,
+        "media_column_width": 60,
+        "details_column_width": 50,
         "limit_details_width": false,
         "gap": 28,
         "enable_sticky_add_to_cart": true,
