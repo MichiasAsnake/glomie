@@ -193,32 +193,6 @@
                 "price_pill"
               ]
             },
-            "text_features_pill": {
-              "type": "text",
-              "name": "t:names.text",
-              "settings": {
-                "text": "<p><strong>9-Piece Set:</strong> A complete packing system for clothing, shoes, laundry, and smaller travel essentials<br/><br/><strong>Faster Packing:</strong> Sort outfits and categories before you leave so unpacking is simpler on arrival<br/><br/><strong>Space-Saving Layout:</strong> Lightweight organizers help keep your suitcase tidy without adding bulk<br/><br/><strong>Made for Repeat Trips:</strong> Breathable panels and zip closures make the set easy to use again and again</p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
             "variant_picker_pill": {
               "type": "variant-picker",
               "name": "t:names.product_variant_picker",
@@ -283,6 +257,32 @@
                 "button_background": "#111827",
                 "button_text_color": "#ffffff"
               }
+            },
+            "text_features_pill": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p><strong>9-Piece Set:</strong> A complete packing system for clothing, shoes, laundry, and smaller travel essentials<br/><br/><strong>Faster Packing:</strong> Sort outfits and categories before you leave so unpacking is simpler on arrival<br/><br/><strong>Space-Saving Layout:</strong> Lightweight organizers help keep your suitcase tidy without adding bulk<br/><br/><strong>Made for Repeat Trips:</strong> Breathable panels and zip closures make the set easy to use again and again</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "accordion_pill": {
               "type": "accordion",
@@ -498,10 +498,10 @@
             "review_C9MXth",
             "product_inventory_pill",
             "group_header_pill",
-            "text_features_pill",
             "variant_picker_pill",
             "buy_buttons_pill",
             "fast_bundle_bundle_offer_e6YRdw",
+            "text_features_pill",
             "accordion_pill",
             "product_description_pill"
           ]
