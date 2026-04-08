@@ -41,7 +41,7 @@
             "padding-block-start": 20,
             "padding-block-end": 0,
             "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "padding-inline-end": 35
           },
           "blocks": {}
         },
@@ -433,7 +433,7 @@
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
-        "equal_columns": true,
+        "equal_columns": false,
         "limit_details_width": false,
         "gap": 28,
         "enable_sticky_add_to_cart": true,
