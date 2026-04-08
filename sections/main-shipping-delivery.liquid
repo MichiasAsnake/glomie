@@ -1,0 +1,270 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<section class="section shipping-page color-{{ section.settings.color_scheme }}">
+  <div class="shipping-page__hero">
+    <div class="shipping-page__shell">
+      <header class="shipping-page__header">
+        <h1 class="shipping-page__title">{{ page.title | default: 'Shipping & Delivery' }}</h1>
+      </header>
+
+      {% if page.content != blank %}
+        <div class="shipping-page__intro rte">
+          {{ page.content }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% assign faq_items = section.blocks | where: 'type', 'faq_item' %}
+  {% if faq_items.size > 0 %}
+    <div class="shipping-page__body">
+      <div class="shipping-page__faq">
+        <div class="shipping-page__faq-header">
+          <h2 class="shipping-page__faq-title">{{ section.settings.faq_heading }}</h2>
+        </div>
+
+        <div class="shipping-page__faq-list">
+          {% for block in faq_items %}
+            <details class="shipping-faq" {{ block.shopify_attributes }}>
+              <summary class="shipping-faq__question">
+                <span>{{ block.settings.question }}</span>
+                <span class="svg-wrapper shipping-faq__icon">
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                </span>
+              </summary>
+              <div class="shipping-faq__answer rte">
+                {{ block.settings.answer }}
+              </div>
+            </details>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% stylesheet %}
+  .shipping-page {
+    --shipping-shell-width: min(1360px, calc(100vw - 48px));
+    --shipping-faq-width: min(980px, calc(100vw - 56px));
+    --shipping-hero-background: #efe1d0;
+    --shipping-border: #ddd8d0;
+    --shipping-text: #171717;
+    --shipping-muted: #5e5952;
+    color: var(--shipping-text);
+  }
+
+  .shipping-page__shell {
+    width: var(--shipping-shell-width);
+    margin: 0 auto;
+  }
+
+  .shipping-page__hero {
+    background: var(--shipping-hero-background);
+    padding: 44px 0 56px;
+  }
+
+  .shipping-page__header {
+    margin-bottom: 18px;
+  }
+
+  .shipping-page__title,
+  .shipping-page__faq-title {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .shipping-page__title {
+    font-size: clamp(2.1rem, 2.8vw, 3.4rem);
+    line-height: 0.96;
+  }
+
+  .shipping-page__intro {
+    max-width: 1280px;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .shipping-page__intro p,
+  .shipping-page__intro h2,
+  .shipping-page__intro h3 {
+    margin-top: 0;
+  }
+
+  .shipping-page__intro p + p,
+  .shipping-page__intro h2 + p,
+  .shipping-page__intro h3 + p,
+  .shipping-page__intro p + h2,
+  .shipping-page__intro p + h3 {
+    margin-top: 18px;
+  }
+
+  .shipping-page__intro strong {
+    font-weight: 700;
+  }
+
+  .shipping-page__body {
+    padding: 60px 0 96px;
+    background: #fff;
+  }
+
+  .shipping-page__faq {
+    width: var(--shipping-faq-width);
+    margin: 0 auto;
+  }
+
+  .shipping-page__faq-header {
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  .shipping-page__faq-title {
+    font-size: clamp(2rem, 2.4vw, 2.9rem);
+    line-height: 0.98;
+  }
+
+  .shipping-page__faq-list {
+    border-top: 1px solid var(--shipping-border);
+  }
+
+  .shipping-faq {
+    border-bottom: 1px solid var(--shipping-border);
+  }
+
+  .shipping-faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 20px 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .shipping-faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .shipping-faq__icon {
+    display: inline-flex;
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+    transition: transform 180ms ease;
+  }
+
+  .shipping-faq[open] .shipping-faq__icon {
+    transform: rotate(180deg);
+  }
+
+  .shipping-faq__answer {
+    padding: 0 0 24px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--shipping-muted);
+  }
+
+  .shipping-faq__answer p {
+    margin: 0;
+  }
+
+  .shipping-faq__answer p + p {
+    margin-top: 16px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .shipping-page {
+      --shipping-shell-width: min(100vw - 32px, 100%);
+      --shipping-faq-width: min(100vw - 40px, 100%);
+    }
+
+    .shipping-page__hero {
+      padding: 34px 0 42px;
+    }
+
+    .shipping-page__intro {
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .shipping-page__body {
+      padding: 44px 0 72px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .shipping-page__title,
+    .shipping-page__faq-title {
+      line-height: 1.02;
+    }
+
+    .shipping-page__intro {
+      font-size: 15px;
+    }
+
+    .shipping-faq__question {
+      padding: 18px 0;
+      font-size: 14px;
+    }
+
+    .shipping-faq__answer {
+      font-size: 15px;
+      line-height: 1.65;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Shipping & delivery",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "FAQ heading",
+      "default": "Questions About Your Order?"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ item",
+      "limit": 16,
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How can I check the status of my order?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Add your answer here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shipping & delivery"
+    }
+  ]
+}
+{% endschema %}

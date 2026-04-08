@@ -1,0 +1,508 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<section class="section returns-page color-{{ section.settings.color_scheme }}">
+  <div class="returns-page__shell">
+    <header class="returns-page__header">
+      <p class="returns-page__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1 class="returns-page__title">{{ page.title | default: 'Returns & Exchanges' }}</h1>
+    </header>
+
+    {% if page.content != blank %}
+      <div class="returns-page__intro rte">
+        {{ page.content }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="returns-page__band">
+    <div class="returns-page__shell">
+      {% assign action_cards = section.blocks | where: 'type', 'action_card' %}
+      {% if action_cards.size > 0 %}
+        <div class="returns-page__cards">
+          {% for block in action_cards %}
+            {% assign link_url = block.settings.link_url %}
+            {% assign tag_name = 'div' %}
+            {% if link_url != blank %}
+              {% assign tag_name = 'a' %}
+            {% endif %}
+
+            <{{ tag_name }}
+              class="returns-card"
+              {% if link_url != blank %}
+                href="{{ link_url }}"
+              {% endif %}
+              {{ block.shopify_attributes }}
+            >
+              <div class="returns-card__icon">
+                {% if block.settings.custom_icon != blank %}
+                  {{ block.settings.custom_icon | image_url: width: 240 | image_tag: widths: '120,180,240', class: 'returns-card__icon-image' }}
+                {% else %}
+                  {% case block.settings.icon_style %}
+                    {% when 'quality' %}
+                      <svg aria-hidden="true" viewBox="0 0 96 96" role="presentation">
+                        <path d="M48 9 16 36l12 41h40l12-41L48 9Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="3"/>
+                        <path d="M48 9v68M16 36h64M28 77l20-41 20 41M32 26l16 10 16-10" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="3"/>
+                      </svg>
+                    {% when 'international' %}
+                      <svg aria-hidden="true" viewBox="0 0 96 96" role="presentation">
+                        <circle cx="48" cy="48" r="36" fill="none" stroke="currentColor" stroke-width="3"/>
+                        <path d="M14 48h68M48 12c10 8 16 22 16 36s-6 28-16 36c-10-8-16-22-16-36s6-28 16-36Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                        <path d="M22 28c8 6 17 9 26 9 10 0 19-3 27-9M22 68c8-6 17-9 26-9 10 0 19 3 27 9" fill="none" stroke="currentColor" stroke-width="3"/>
+                      </svg>
+                    {% else %}
+                      <svg aria-hidden="true" viewBox="0 0 96 96" role="presentation">
+                        <rect x="18" y="16" width="24" height="56" rx="4" fill="none" stroke="currentColor" stroke-width="3"/>
+                        <rect x="54" y="16" width="24" height="56" rx="4" fill="none" stroke="currentColor" stroke-width="3"/>
+                        <path d="M46 33h8M46 48h8M46 63h8M42 48l-9-7M42 48l-9 7M54 48l9-7M54 48l9 7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="3"/>
+                      </svg>
+                  {% endcase %}
+                {% endif %}
+              </div>
+
+              <div class="returns-card__body">
+                <h2 class="returns-card__title">{{ block.settings.title }}</h2>
+                {% if block.settings.body != blank %}
+                  <p class="returns-card__text">{{ block.settings.body }}</p>
+                {% endif %}
+                {% if block.settings.link_label != blank %}
+                  <span class="returns-card__link">
+                    {{ block.settings.link_label }}
+                    <span aria-hidden="true">→</span>
+                  </span>
+                {% endif %}
+              </div>
+            </{{ tag_name }}>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% assign faq_items = section.blocks | where: 'type', 'faq_item' %}
+      {% if faq_items.size > 0 %}
+        <div class="returns-page__faq">
+          <div class="returns-page__faq-header">
+            <p class="returns-page__eyebrow">{{ section.settings.faq_eyebrow }}</p>
+            <h2 class="returns-page__faq-title">{{ section.settings.faq_heading }}</h2>
+          </div>
+
+          <div class="returns-page__faq-list">
+            {% for block in faq_items %}
+              <details class="returns-faq" {{ block.shopify_attributes }}>
+                <summary class="returns-faq__question">
+                  <span>{{ block.settings.question }}</span>
+                  <span class="svg-wrapper returns-faq__icon">
+                    {{- 'icon-caret.svg' | inline_asset_content -}}
+                  </span>
+                </summary>
+                <div class="returns-faq__answer rte">
+                  {{ block.settings.answer }}
+                </div>
+              </details>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .returns-page {
+    --returns-shell-width: min(1360px, calc(100vw - 48px));
+    --returns-copy-width: min(1220px, 100%);
+    --returns-band-color: #f3f1ed;
+    --returns-card-border: #ddd8d0;
+    --returns-text: #161616;
+    --returns-muted: #5a554f;
+    color: var(--returns-text);
+  }
+
+  .returns-page__shell {
+    width: var(--returns-shell-width);
+    margin: 0 auto;
+  }
+
+  .returns-page__header {
+    padding-top: 40px;
+  }
+
+  .returns-page__eyebrow {
+    margin: 0 0 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .returns-page__title,
+  .returns-page__faq-title,
+  .returns-card__title {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
+  .returns-page__title {
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    line-height: 0.95;
+  }
+
+  .returns-page__intro {
+    width: var(--returns-copy-width);
+    padding: 28px 0 56px;
+    font-size: 18px;
+    line-height: 1.72;
+  }
+
+  .returns-page__intro p,
+  .returns-page__intro h2,
+  .returns-page__intro h3 {
+    margin-top: 0;
+  }
+
+  .returns-page__intro p + p,
+  .returns-page__intro p + h2,
+  .returns-page__intro p + h3,
+  .returns-page__intro h2 + p,
+  .returns-page__intro h3 + p {
+    margin-top: 24px;
+  }
+
+  .returns-page__intro h2,
+  .returns-page__intro h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .returns-page__band {
+    background: var(--returns-band-color);
+    padding: 52px 0 96px;
+  }
+
+  .returns-page__cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin-bottom: 88px;
+  }
+
+  .returns-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 380px;
+    padding: 42px 32px 36px;
+    border: 1px solid var(--returns-card-border);
+    background: #fff;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .returns-card:hover {
+    transform: translateY(-3px);
+    border-color: #bfb9ae;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.06);
+  }
+
+  .returns-card__icon {
+    display: grid;
+    place-items: center;
+    width: 130px;
+    height: 130px;
+    margin-bottom: 28px;
+  }
+
+  .returns-card__icon svg,
+  .returns-card__icon-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .returns-card__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+  }
+
+  .returns-card__title {
+    font-size: 1.9rem;
+    line-height: 0.95;
+  }
+
+  .returns-card__text {
+    max-width: 22ch;
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--returns-muted);
+  }
+
+  .returns-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .returns-page__faq {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .returns-page__faq-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .returns-page__faq-header .returns-page__eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .returns-page__faq-title {
+    font-size: clamp(2rem, 2.4vw, 2.75rem);
+    line-height: 0.98;
+  }
+
+  .returns-page__faq-list {
+    border-top: 1px solid var(--returns-card-border);
+  }
+
+  .returns-faq {
+    border-bottom: 1px solid var(--returns-card-border);
+  }
+
+  .returns-faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .returns-faq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .returns-faq__icon {
+    display: inline-flex;
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+    transition: transform 180ms ease;
+  }
+
+  .returns-faq[open] .returns-faq__icon {
+    transform: rotate(180deg);
+  }
+
+  .returns-faq__answer {
+    padding: 0 0 24px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--returns-muted);
+  }
+
+  .returns-faq__answer p {
+    margin: 0;
+  }
+
+  .returns-faq__answer p + p {
+    margin-top: 16px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .returns-page {
+      --returns-shell-width: min(100vw - 32px, 100%);
+    }
+
+    .returns-page__intro {
+      font-size: 16px;
+      line-height: 1.68;
+      padding-bottom: 40px;
+    }
+
+    .returns-page__cards {
+      grid-template-columns: 1fr;
+      margin-bottom: 64px;
+    }
+
+    .returns-card {
+      min-height: auto;
+      padding: 36px 28px 32px;
+    }
+
+    .returns-card__icon {
+      width: 104px;
+      height: 104px;
+      margin-bottom: 22px;
+    }
+
+    .returns-card__title {
+      font-size: 1.55rem;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .returns-page__header {
+      padding-top: 24px;
+    }
+
+    .returns-page__band {
+      padding: 36px 0 72px;
+    }
+
+    .returns-page__title,
+    .returns-page__faq-title {
+      line-height: 1.02;
+    }
+
+    .returns-page__intro {
+      padding-top: 20px;
+      font-size: 15px;
+    }
+
+    .returns-faq__question {
+      padding: 18px 0;
+      font-size: 15px;
+    }
+
+    .returns-faq__answer {
+      font-size: 15px;
+      line-height: 1.65;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Returns & exchanges",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Top label",
+      "default": "Customer care"
+    },
+    {
+      "type": "text",
+      "id": "faq_eyebrow",
+      "label": "FAQ label",
+      "default": "Need help?"
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "FAQ heading",
+      "default": "Return Policy & FAQ"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "action_card",
+      "name": "Action card",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_style",
+          "label": "Icon style",
+          "options": [
+            {
+              "value": "returns",
+              "label": "Returns"
+            },
+            {
+              "value": "quality",
+              "label": "Quality"
+            },
+            {
+              "value": "international",
+              "label": "International"
+            }
+          ],
+          "default": "returns"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Custom icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Returns & exchanges"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body",
+          "default": "Start a return or exchange with our support team."
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "Start a return or exchange"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    },
+    {
+      "type": "faq_item",
+      "name": "FAQ item",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is your return policy?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Add your answer here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Returns & exchanges"
+    }
+  ]
+}
+{% endschema %}

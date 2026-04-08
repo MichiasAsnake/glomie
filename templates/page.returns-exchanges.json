@@ -1,0 +1,86 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-returns-exchanges",
+      "blocks": {
+        "card_returns": {
+          "type": "action_card",
+          "settings": {
+            "icon_style": "returns",
+            "title": "Returns & Exchanges",
+            "body": "Start a return or exchange.",
+            "link_label": "Start a return or exchange",
+            "link_url": ""
+          }
+        },
+        "card_quality": {
+          "type": "action_card",
+          "settings": {
+            "icon_style": "quality",
+            "title": "Our Quality Guarantee",
+            "body": "Submit a claim.",
+            "link_label": "Submit a claim",
+            "link_url": ""
+          }
+        },
+        "card_international": {
+          "type": "action_card",
+          "settings": {
+            "icon_style": "international",
+            "title": "International Customers",
+            "body": "Start a return or exchange.",
+            "link_label": "International returns",
+            "link_url": ""
+          }
+        },
+        "faq_policy": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>Add your return policy answer here.</p>"
+          }
+        },
+        "faq_exchange": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do exchanges work?",
+            "answer": "<p>Add your exchange answer here.</p>"
+          }
+        },
+        "faq_refund": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does it take to process a refund?",
+            "answer": "<p>Add your refund timing answer here.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_returns",
+        "card_quality",
+        "card_international",
+        "faq_policy",
+        "faq_exchange",
+        "faq_refund"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "eyebrow": "Customer care",
+        "faq_eyebrow": "Support",
+        "faq_heading": "Return Policy & FAQ"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

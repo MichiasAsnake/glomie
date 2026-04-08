@@ -1,0 +1,107 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-shipping-delivery",
+      "blocks": {
+        "faq_carriers": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Which carriers do you use?",
+            "answer": "<p>Add your carrier details here.</p>"
+          }
+        },
+        "faq_status": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I check the status of my order?",
+            "answer": "<p>Add your order status answer here.</p>"
+          }
+        },
+        "faq_track": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I track my order?",
+            "answer": "<p>Add your tracking answer here.</p>"
+          }
+        },
+        "faq_address": {
+          "type": "faq_item",
+          "settings": {
+            "question": "I entered the wrong address, what do I do?",
+            "answer": "<p>Add your address change answer here.</p>"
+          }
+        },
+        "faq_po_boxes": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you ship to PO boxes?",
+            "answer": "<p>Add your PO box answer here.</p>"
+          }
+        },
+        "faq_out_of_stock": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What happens if I order something and it is out of stock?",
+            "answer": "<p>Add your out of stock answer here.</p>"
+          }
+        },
+        "faq_shipment_issue": {
+          "type": "faq_item",
+          "settings": {
+            "question": "There is a problem with my shipment, what do I do?",
+            "answer": "<p>Add your shipment issue answer here.</p>"
+          }
+        },
+        "faq_lost": {
+          "type": "faq_item",
+          "settings": {
+            "question": "My order never arrived. Lost or stolen shipments.",
+            "answer": "<p>Add your lost shipment answer here.</p>"
+          }
+        },
+        "faq_countries": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Which countries do you ship to?",
+            "answer": "<p>Add your shipping countries answer here.</p>"
+          }
+        },
+        "faq_duties": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you pay for international shipping duties and taxes?",
+            "answer": "<p>Add your duties and taxes answer here.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_carriers",
+        "faq_status",
+        "faq_track",
+        "faq_address",
+        "faq_po_boxes",
+        "faq_out_of_stock",
+        "faq_shipment_issue",
+        "faq_lost",
+        "faq_countries",
+        "faq_duties"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "faq_heading": "Questions About Your Order?"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
