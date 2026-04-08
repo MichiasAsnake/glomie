@@ -142,7 +142,7 @@
                   "type": "product-title",
                   "name": "t:names.title",
                   "settings": {
-                    "subheading": "9-Piece Packing Cube Set for Organized Travel",
+                    "subheading": "",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
