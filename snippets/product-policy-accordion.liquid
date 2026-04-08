@@ -1,24 +1,35 @@
-{% assign has_shipping_policy = shop.shipping_policy != blank and shop.shipping_policy.body != blank %}
-{% assign has_refund_policy = shop.refund_policy != blank and shop.refund_policy.body != blank %}
-
-<div class="product-policy-accordion rte">
-  {% if has_shipping_policy %}
-    <p><strong>{{ shop.shipping_policy.title | default: 'Shipping' }}</strong></p>
-    {{ shop.shipping_policy.body }}
-  {% else %}
+<div class="product-policy-accordion">
+  {% if shop.shipping_policy != blank and shop.shipping_policy.url != blank %}
     <p>
-      <strong>Shipping</strong><br>
-      Shipping rates and delivery timing are shown at checkout.
+      See full shipping details
+      <a href="{{ shop.shipping_policy.url }}">here</a>
     </p>
   {% endif %}
 
-  {% if has_refund_policy %}
-    <p><strong>{{ shop.refund_policy.title | default: 'Returns' }}</strong></p>
-    {{ shop.refund_policy.body }}
-  {% else %}
+  {% if shop.refund_policy != blank and shop.refund_policy.url != blank %}
     <p>
-      <strong>Returns</strong><br>
-      Please refer to your store refund policy for return eligibility, windows, and exceptions.
+      See full return &amp; exchange details
+      <a href="{{ shop.refund_policy.url }}">here</a>
     </p>
   {% endif %}
 </div>
+
+<style>
+  .product-policy-accordion {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .product-policy-accordion p {
+    margin: 0 0 8px;
+  }
+
+  .product-policy-accordion p:last-child {
+    margin-bottom: 0;
+  }
+
+  .product-policy-accordion a {
+    font-weight: 700;
+    text-decoration: underline;
+  }
+</style>
