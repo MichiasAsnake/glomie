@@ -15,71 +15,64 @@
         "faq_carriers": {
           "type": "faq_item",
           "settings": {
-            "question": "Which carriers do you use?",
-            "answer": "<p>Add your carrier details here.</p>"
+            "question": "WHICH CARRIERS DO YOU USE?",
+            "answer": "<p>We ship using USPS and ePacket depending on your location and order size.</p>"
           }
         },
         "faq_status": {
           "type": "faq_item",
           "settings": {
-            "question": "How can I check the status of my order?",
-            "answer": "<p>Add your order status answer here.</p>"
+            "question": "HOW CAN I CHECK THE STATUS OF MY ORDER?",
+            "answer": "<p>Once your order ships you'll receive a confirmation email with tracking information. If you haven't received tracking within 3 business days of ordering please reach out to us at hello@glowaestheticgifts.com.</p>"
           }
         },
         "faq_track": {
           "type": "faq_item",
           "settings": {
-            "question": "How do I track my order?",
-            "answer": "<p>Add your tracking answer here.</p>"
+            "question": "HOW DO I TRACK MY ORDER?",
+            "answer": "<p>A shipping confirmation email with your tracking number will be sent as soon as your order is on its way. Still have questions? Email us at hello@glowaestheticgifts.com.</p>"
           }
         },
         "faq_address": {
           "type": "faq_item",
           "settings": {
-            "question": "I entered the wrong address, what do I do?",
-            "answer": "<p>Add your address change answer here.</p>"
+            "question": "I ENTERED THE WRONG ADDRESS, WHAT DO I DO?",
+            "answer": "<p>Contact us at hello@glowaestheticgifts.com immediately. We have a very limited window to make address changes before your order is processed and shipped. We'll do our best to accommodate but cannot guarantee changes once the order is in fulfillment.</p>"
           }
         },
         "faq_po_boxes": {
           "type": "faq_item",
           "settings": {
-            "question": "Do you ship to PO boxes?",
-            "answer": "<p>Add your PO box answer here.</p>"
+            "question": "DO YOU SHIP TO PO BOXES?",
+            "answer": "<p>Unfortunately we are unable to ship to PO Boxes at this time.</p>"
           }
         },
         "faq_out_of_stock": {
           "type": "faq_item",
           "settings": {
-            "question": "What happens if I order something and it is out of stock?",
-            "answer": "<p>Add your out of stock answer here.</p>"
+            "question": "WHAT HAPPENS IF MY ITEM IS OUT OF STOCK?",
+            "answer": "<p>In the rare event an item is out of stock we will contact you immediately and issue a full refund to your original payment method within 3-5 business days.</p>"
           }
         },
         "faq_shipment_issue": {
           "type": "faq_item",
           "settings": {
-            "question": "There is a problem with my shipment, what do I do?",
-            "answer": "<p>Add your shipment issue answer here.</p>"
+            "question": "THERE IS A PROBLEM WITH MY SHIPMENT. WHAT DO I DO?",
+            "answer": "<p>If your package appears stuck or delayed in tracking, contact us at hello@glowaestheticgifts.com and we'll work with the carrier on your behalf to resolve it as quickly as possible.</p>"
           }
         },
         "faq_lost": {
           "type": "faq_item",
           "settings": {
-            "question": "My order never arrived. Lost or stolen shipments.",
-            "answer": "<p>Add your lost shipment answer here.</p>"
+            "question": "MY ORDER NEVER ARRIVED. WHAT DO I DO?",
+            "answer": "<p>If your order hasn't arrived within your estimated delivery window please email us at hello@glowaestheticgifts.com and we'll investigate right away. Please allow up to 5-7 business days for us to look into the issue with the carrier.</p>"
           }
         },
         "faq_countries": {
           "type": "faq_item",
           "settings": {
-            "question": "Which countries do you ship to?",
-            "answer": "<p>Add your shipping countries answer here.</p>"
-          }
-        },
-        "faq_duties": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Do you pay for international shipping duties and taxes?",
-            "answer": "<p>Add your duties and taxes answer here.</p>"
+            "question": "DO YOU SHIP INTERNATIONALLY?",
+            "answer": "<p>We currently ship within the United States only. International shipping is not available at this time.</p>"
           }
         }
       },
@@ -92,12 +85,12 @@
         "faq_out_of_stock",
         "faq_shipment_issue",
         "faq_lost",
-        "faq_countries",
-        "faq_duties"
+        "faq_countries"
       ],
       "settings": {
         "color_scheme": "scheme-1",
-        "faq_heading": "Questions About Your Order?"
+        "faq_heading": "QUESTIONS ABOUT YOUR ORDER?",
+        "faq_intro": "Email us at hello@glowaestheticgifts.com with your order number in the subject line and we'll get back to you within 1-2 business days."
       }
     }
   },

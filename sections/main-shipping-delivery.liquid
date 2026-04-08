@@ -20,6 +20,9 @@
       <div class="shipping-page__faq">
         <div class="shipping-page__faq-header">
           <h2 class="shipping-page__faq-title">{{ section.settings.faq_heading }}</h2>
+          {% if section.settings.faq_intro != blank %}
+            <p class="shipping-page__faq-intro">{{ section.settings.faq_intro }}</p>
+          {% endif %}
         </div>
 
         <div class="shipping-page__faq-list">
@@ -124,6 +127,14 @@
   .shipping-page__faq-title {
     font-size: clamp(2rem, 2.4vw, 2.9rem);
     line-height: 0.98;
+  }
+
+  .shipping-page__faq-intro {
+    max-width: 720px;
+    margin: 14px auto 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--shipping-muted);
   }
 
   .shipping-page__faq-list {
@@ -238,6 +249,12 @@
       "id": "faq_heading",
       "label": "FAQ heading",
       "default": "Questions About Your Order?"
+    },
+    {
+      "type": "textarea",
+      "id": "faq_intro",
+      "label": "FAQ intro",
+      "default": "Add optional support text here."
     }
   ],
   "blocks": [
