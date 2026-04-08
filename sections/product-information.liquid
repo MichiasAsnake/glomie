@@ -429,6 +429,34 @@
     },
     {
       "type": "checkbox",
+      "id": "custom_desktop_column_widths",
+      "label": "Custom desktop column widths",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "media_column_width",
+      "label": "Media column width",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 50,
+      "visible_if": "{{ section.settings.custom_desktop_column_widths }}"
+    },
+    {
+      "type": "range",
+      "id": "details_column_width",
+      "label": "Details column width",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 50,
+      "visible_if": "{{ section.settings.custom_desktop_column_widths }}"
+    },
+    {
+      "type": "checkbox",
       "id": "limit_details_width",
       "label": "t:settings.limit_product_details_width",
       "default": false,
