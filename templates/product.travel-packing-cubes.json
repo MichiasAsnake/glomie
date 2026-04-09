@@ -42,7 +42,7 @@
             "padding-block-start": 20,
             "padding-block-end": 0,
             "padding-inline-start": 0,
-            "padding-inline-end": 35
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -482,7 +482,7 @@
         "media_column_width": 70,
         "details_column_width": 50,
         "limit_details_width": false,
-        "gap": 28,
+        "gap": 32,
         "enable_sticky_add_to_cart": true,
         "color_scheme": "scheme-1",
         "padding-block-start": 0,
