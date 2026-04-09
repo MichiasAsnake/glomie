@@ -24,11 +24,28 @@
 {%- endif -%}
 {%- liquid
   assign selected_product = closest.product
-  assign selected_variant_media = selected_product.selected_or_first_available_variant.featured_media
+  assign selected_variant = selected_product.selected_or_first_available_variant
+  assign selected_variant_media = selected_variant.featured_media
   assign first_3d_model = selected_product.media | where: 'media_type', 'model' | first
+  assign selected_color_value = blank
+  assign selected_color_value_normalized = blank
 
   if block_settings.hide_variants
     assign variant_images = selected_product.images | where: 'attached_to_variant?', true | map: 'src'
+  endif
+
+  if block_settings.filter_media_by_color_alt and selected_variant != blank
+    for option in selected_product.options_with_values
+      assign option_name_normalized = option.name | downcase
+      if option_name_normalized contains 'color' or option_name_normalized contains 'colour'
+        assign selected_color_value = selected_variant.options[forloop.index0]
+        break
+      endif
+    endfor
+
+    if selected_color_value != blank
+      assign selected_color_value_normalized = selected_color_value | downcase | strip | replace: '-', ' ' | replace: '_', ' '
+    endif
   endif
 
   if block_settings.slideshow_controls_style == 'thumbnails'
@@ -110,6 +127,42 @@
     assign found_media = selected_product.media | where: 'id', media.id
     assign sorted_media = sorted_media | concat: found_media
   endfor
+
+  if block_settings.filter_media_by_color_alt and selected_color_value_normalized != blank
+    assign color_filtered_media = '' | split: ','
+
+    for media in sorted_media
+      if media.media_type != 'image'
+        assign found_media = selected_product.media | where: 'id', media.id
+        assign color_filtered_media = color_filtered_media | concat: found_media
+        continue
+      endif
+
+      assign media_alt_normalized = media.alt | default: '' | downcase | strip | replace: '-', ' ' | replace: '_', ' '
+
+      if media_alt_normalized == blank
+        continue
+      endif
+
+      assign prefixed_color_tag = 'color ' | append: selected_color_value_normalized
+      assign labelled_color_tag = 'color: ' | append: selected_color_value_normalized
+
+      if media_alt_normalized contains prefixed_color_tag
+        assign found_media = selected_product.media | where: 'id', media.id
+        assign color_filtered_media = color_filtered_media | concat: found_media
+      elsif media_alt_normalized contains labelled_color_tag
+        assign found_media = selected_product.media | where: 'id', media.id
+        assign color_filtered_media = color_filtered_media | concat: found_media
+      elsif media_alt_normalized == selected_color_value_normalized
+        assign found_media = selected_product.media | where: 'id', media.id
+        assign color_filtered_media = color_filtered_media | concat: found_media
+      endif
+    endfor
+
+    if color_filtered_media.size > 0
+      assign sorted_media = color_filtered_media
+    endif
+  endif
 
   assign initial_slide_index = 0
   if selected_variant_media

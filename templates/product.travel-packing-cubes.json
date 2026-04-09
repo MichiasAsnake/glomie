@@ -38,6 +38,7 @@
             "zoom": false,
             "video_loop": false,
             "hide_variants": false,
+            "filter_media_by_color_alt": true,
             "padding-block-start": 20,
             "padding-block-end": 0,
             "padding-inline-start": 0,
