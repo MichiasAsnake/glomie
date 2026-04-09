@@ -256,6 +256,46 @@
               },
               "block_order": []
             },
+            "support_returns_pill": {
+              "type": "product-support-note",
+              "settings": {
+                "text": "30-day hassle-free returns",
+                "icon": "none",
+                "alignment": "center",
+                "link": "",
+                "open_in_new_tab": false,
+                "padding-block-start": 6,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "support_shipping_pill": {
+              "type": "product-support-note",
+              "settings": {
+                "text": "Ships in 3-5 business days",
+                "icon": "none",
+                "alignment": "center",
+                "link": "",
+                "open_in_new_tab": false,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "trust_row_pill": {
+              "type": "product-trust-row",
+              "settings": {
+                "item_1_icon": "lock",
+                "item_1_text": "Secure checkout",
+                "item_2_icon": "truck",
+                "item_2_text": "Tracked shipping",
+                "item_3_icon": "return",
+                "item_3_text": "30-day returns",
+                "padding-block-start": 10,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
             "fast_bundle_bundle_offer_JHacUx": {
               "type": "shopify://apps/fast-bundle/blocks/bundle_offer/019cfa4a-c71f-79ba-8538-530b4007e72d",
               "settings": {
@@ -445,6 +485,9 @@
             "text_features_pill",
             "variant_picker_pill",
             "buy_buttons_pill",
+            "support_returns_pill",
+            "support_shipping_pill",
+            "trust_row_pill",
             "fast_bundle_bundle_offer_JHacUx",
             "accordion_pill",
             "product_description_pill"
