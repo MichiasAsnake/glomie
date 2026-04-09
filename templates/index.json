@@ -234,7 +234,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<p><strong>The Glomie Travel Organization Kit</strong></p>",
+                "text": "<p>The Glomie Travel Organization Kit</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
