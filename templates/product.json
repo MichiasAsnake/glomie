@@ -256,6 +256,46 @@
               },
               "block_order": []
             },
+            "support_returns_pdp": {
+              "type": "product-support-note",
+              "settings": {
+                "text": "30-day hassle-free returns",
+                "icon": "none",
+                "alignment": "center",
+                "link": "",
+                "open_in_new_tab": false,
+                "padding-block-start": 6,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "support_shipping_pdp": {
+              "type": "product-support-note",
+              "settings": {
+                "text": "Ships in 3-5 business days",
+                "icon": "none",
+                "alignment": "center",
+                "link": "",
+                "open_in_new_tab": false,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "trust_row_pdp": {
+              "type": "product-trust-row",
+              "settings": {
+                "item_1_icon": "lock",
+                "item_1_text": "Secure checkout",
+                "item_2_icon": "truck",
+                "item_2_text": "Tracked shipping",
+                "item_3_icon": "return",
+                "item_3_text": "30-day returns",
+                "padding-block-start": 10,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
             "accordion_pdp": {
               "type": "accordion",
               "name": "t:names.accordion",
@@ -432,6 +472,9 @@
             "text_features_pdp",
             "variant_picker_pdp",
             "buy_buttons_pdp",
+            "support_returns_pdp",
+            "support_shipping_pdp",
+            "trust_row_pdp",
             "accordion_pdp",
             "product_description_pdp"
           ]

@@ -1,0 +1,185 @@
+{% assign block_settings = block.settings %}
+
+{% assign trust_icons = 'lock,truck,return' | split: ',' %}
+{% assign trust_titles = 'Secure checkout,Ships in 3-5 business days,30-day hassle-free returns' | split: ',' %}
+
+<div
+  class="product-trust-row product-trust-row--{{ block.id }} spacing-style"
+  style="{% render 'spacing-style', settings: block_settings %}"
+  {{ block.shopify_attributes }}
+>
+  {% for index in (1..3) %}
+    {% liquid
+      assign icon_key = 'item_' | append: index | append: '_icon'
+      assign title_key = 'item_' | append: index | append: '_text'
+      assign icon_value = block_settings[icon_key]
+      assign title_value = block_settings[title_key]
+      assign fallback_icon = trust_icons[forloop.index0]
+      assign fallback_title = trust_titles[forloop.index0]
+    %}
+
+    <div class="product-trust-row__item">
+      <span class="product-trust-row__icon" aria-hidden="true">
+        <svg
+          class="product-trust-row__icon-svg"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          width="20"
+          height="20"
+        >
+          {% render 'icon', icon: icon_value | default: fallback_icon %}
+        </svg>
+      </span>
+      <span class="product-trust-row__text">{{ title_value | default: fallback_title }}</span>
+    </div>
+  {% endfor %}
+</div>
+
+{% stylesheet %}
+  .product-trust-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    padding-top: 8px;
+  }
+
+  .product-trust-row__item {
+    display: grid;
+    justify-items: center;
+    gap: 8px;
+    text-align: center;
+    color: var(--color-foreground);
+  }
+
+  .product-trust-row__icon {
+    display: inline-flex;
+    width: 22px;
+    height: 22px;
+  }
+
+  .product-trust-row__icon-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .product-trust-row__text {
+    font-size: 13px;
+    line-height: 1.45;
+    font-weight: 500;
+    max-width: 13ch;
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-trust-row {
+      gap: 10px;
+    }
+
+    .product-trust-row__text {
+      font-size: 12px;
+      max-width: 11ch;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Product trust row",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Item 1"
+    },
+    {
+      "type": "select",
+      "id": "item_1_icon",
+      "label": "Icon",
+      "options": [
+        { "value": "lock", "label": "Lock" },
+        { "value": "truck", "label": "Truck" },
+        { "value": "return", "label": "Returns" },
+        { "value": "plane", "label": "Shipping" },
+        { "value": "box", "label": "Package" }
+      ],
+      "default": "lock"
+    },
+    {
+      "type": "text",
+      "id": "item_1_text",
+      "label": "Text",
+      "default": "Secure checkout"
+    },
+    {
+      "type": "header",
+      "content": "Item 2"
+    },
+    {
+      "type": "select",
+      "id": "item_2_icon",
+      "label": "Icon",
+      "options": [
+        { "value": "lock", "label": "Lock" },
+        { "value": "truck", "label": "Truck" },
+        { "value": "return", "label": "Returns" },
+        { "value": "plane", "label": "Shipping" },
+        { "value": "box", "label": "Package" }
+      ],
+      "default": "truck"
+    },
+    {
+      "type": "text",
+      "id": "item_2_text",
+      "label": "Text",
+      "default": "Ships in 3-5 business days"
+    },
+    {
+      "type": "header",
+      "content": "Item 3"
+    },
+    {
+      "type": "select",
+      "id": "item_3_icon",
+      "label": "Icon",
+      "options": [
+        { "value": "lock", "label": "Lock" },
+        { "value": "truck", "label": "Truck" },
+        { "value": "return", "label": "Returns" },
+        { "value": "plane", "label": "Shipping" },
+        { "value": "box", "label": "Package" }
+      ],
+      "default": "return"
+    },
+    {
+      "type": "text",
+      "id": "item_3_text",
+      "label": "Text",
+      "default": "30-day hassle-free returns"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ]
+}
+{% endschema %}
