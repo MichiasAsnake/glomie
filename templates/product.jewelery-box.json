@@ -38,6 +38,7 @@
             "zoom": false,
             "video_loop": false,
             "hide_variants": false,
+            "filter_media_by_color_alt": false,
             "padding-block-start": 20,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -75,6 +76,7 @@
             "product_inventory_pill": {
               "type": "product-inventory",
               "name": "t:names.product_inventory",
+              "disabled": true,
               "settings": {
                 "inventory_threshold": 10,
                 "show_inventory_quantity": true,
@@ -129,11 +131,11 @@
                   "type": "product-title",
                   "name": "t:names.title",
                   "settings": {
-                    "subheading": "Compact Travel Storage for Jewelry on the Go",
+                    "subheading": "",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
-                    "type_preset": "h2",
+                    "type_preset": "h4",
                     "font": "var(--font-body--family)",
                     "font_size": "1rem",
                     "line_height": "normal",
@@ -183,6 +185,7 @@
             "text_features_pill": {
               "type": "text",
               "name": "t:names.text",
+              "disabled": true,
               "settings": {
                 "text": "<p><strong>Compact Organization:</strong> Ring rolls, necklace hooks, and divided compartments keep small pieces neatly in place<br/><br/><strong>Travel-Friendly Design:</strong> Structured storage slips easily into carry-ons, totes, and dresser drawers<br/><br/><strong>Soft Interior Protection:</strong> Lined compartments help reduce scratches, tangles, and everyday wear<br/><br/><strong>Easy Everyday Access:</strong> Ideal for trips, weekends away, or keeping favorites organized at home</p>",
                 "width": "fit-content",
@@ -235,6 +238,7 @@
               "blocks": {
                 "quantity": {
                   "type": "quantity",
+                  "disabled": true,
                   "static": true,
                   "settings": {},
                   "blocks": {}
@@ -249,6 +253,7 @@
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
+                  "disabled": true,
                   "static": true,
                   "settings": {},
                   "blocks": {}
@@ -501,6 +506,9 @@
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
         "equal_columns": true,
+        "custom_desktop_column_widths": false,
+        "media_column_width": 50,
+        "details_column_width": 50,
         "limit_details_width": false,
         "gap": 32,
         "enable_sticky_add_to_cart": true,
