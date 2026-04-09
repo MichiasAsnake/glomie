@@ -38,6 +38,7 @@
             "zoom": false,
             "video_loop": false,
             "hide_variants": false,
+            "filter_media_by_color_alt": false,
             "padding-block-start": 20,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -72,19 +73,6 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_inventory_pill": {
-              "type": "product-inventory",
-              "name": "t:names.product_inventory",
-              "settings": {
-                "inventory_threshold": 10,
-                "show_inventory_quantity": true,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
             "group_header_pill": {
               "type": "group",
               "name": "t:names.header",
@@ -129,11 +117,11 @@
                   "type": "product-title",
                   "name": "t:names.title",
                   "settings": {
-                    "subheading": "Pack Shoes Separately, Travel Cleaner",
+                    "subheading": "",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
-                    "type_preset": "h2",
+                    "type_preset": "h4",
                     "font": "var(--font-body--family)",
                     "font_size": "1rem",
                     "line_height": "normal",
@@ -184,7 +172,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p><strong>Separate and Organized:</strong> Keep shoes away from clothing to protect the rest of your luggage<br/><br/><strong>Travel-Ready Material:</strong> Lightweight, durable fabric helps shield from dust and light moisture<br/><br/><strong>Compact Design:</strong> Folds flat when not in use and fits easily in carry-ons or suitcases<br/><br/><strong>Everyday Convenience:</strong> Ideal for trips, gym shoes, or spare footwear storage at home</p>",
+                "text": "",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -235,6 +223,7 @@
               "blocks": {
                 "quantity": {
                   "type": "quantity",
+                  "disabled": true,
                   "static": true,
                   "settings": {},
                   "blocks": {}
@@ -249,6 +238,7 @@
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
+                  "disabled": true,
                   "static": true,
                   "settings": {},
                   "blocks": {}
@@ -455,6 +445,7 @@
             "product_description_pill": {
               "type": "product-description",
               "name": "t:names.product_description",
+              "disabled": true,
               "settings": {
                 "text": "{{ closest.product.description }}",
                 "width": "100%",
@@ -480,7 +471,6 @@
             }
           },
           "block_order": [
-            "product_inventory_pill",
             "group_header_pill",
             "text_features_pill",
             "variant_picker_pill",
@@ -501,6 +491,9 @@
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
         "equal_columns": true,
+        "custom_desktop_column_widths": false,
+        "media_column_width": 50,
+        "details_column_width": 50,
         "limit_details_width": false,
         "gap": 32,
         "enable_sticky_add_to_cart": true,
