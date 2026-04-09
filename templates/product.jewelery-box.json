@@ -338,7 +338,7 @@
                   "settings": {
                     "heading": "DESCRIPTION",
                     "open_by_default": false,
-                    "icon": "star",
+                    "icon": "none",
                     "width": 12
                   },
                   "blocks": {
@@ -377,7 +377,7 @@
                   "settings": {
                     "heading": "DETAILS & SPECIFICATIONS",
                     "open_by_default": false,
-                    "icon": "clipboard",
+                    "icon": "none",
                     "width": 20
                   },
                   "blocks": {
@@ -416,7 +416,7 @@
                   "settings": {
                     "heading": "SHIPPING & RETURNS",
                     "open_by_default": false,
-                    "icon": "return",
+                    "icon": "none",
                     "width": 20
                   },
                   "blocks": {
@@ -460,6 +460,7 @@
             "product_description_pill": {
               "type": "product-description",
               "name": "t:names.product_description",
+              "disabled": true,
               "settings": {
                 "text": "<p></p>{{ closest.product.description }}",
                 "width": "100%",
