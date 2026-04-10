@@ -26,7 +26,7 @@
             "large_first_image": false,
             "icons_style": "chevron",
             "slideshow_controls_style": "thumbnails",
-            "slideshow_mobile_controls_style": "thumbnails",
+            "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "bottom",
             "thumbnail_width": 66,
             "thumbnail_radius": 10,
