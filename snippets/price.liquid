@@ -13,10 +13,12 @@
   assign selected_variant = product_resource.selected_or_first_available_variant
   assign price = selected_variant.price
   assign compare_at_price = selected_variant.compare_at_price
+  assign savings_percentage = 0
 
   assign show_compare_price = false
   if compare_at_price > price
     assign show_compare_price = true
+    assign savings_percentage = compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round
   endif
 
   if product_resource == blank
@@ -72,44 +74,58 @@
   endif
 -%}
 
-<div ref="priceContainer">
-  {% if has_volume_pricing %}
-    {% comment %} Volume pricing display {% endcomment %}
-    {% if show_compare_price %}
+<div
+  ref="priceContainer"
+  class="price-display"
+>
+  <div class="price-main-row">
+    {% if has_volume_pricing %}
+      {% comment %} Volume pricing display {% endcomment %}
+      {% if show_compare_price %}
+        <span role="group">
+          <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
+          <span class="compare-at-price">{{- compare_at_price -}}</span>
+        </span>
+      {% endif %}
       <span role="group">
-        <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
-        <span class="compare-at-price">{{- compare_at_price -}}</span>
-      </span>
-    {% endif %}
-    <span role="group">
-      <span class="visually-hidden">{{ 'content.price_range' | t }}&nbsp;</span>
-      <span class="price price-range price--large">{{ price_min }} - {{ price_max }}</span>
-    </span>
-  {% else %}
-    {% comment %} Standard pricing display {% endcomment %}
-    {% if show_sale_price_first == false and show_compare_price %}
-      <span role="group">
-        <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
-        <span class="compare-at-price">{{- compare_at_price -}}</span>
-      </span>
-    {% endif %}
-
-    {% if show_compare_price %}
-      <span role="group">
-        <span class="visually-hidden">{{ 'content.price_sale' | t }}&nbsp;</span>
-        <span class="price">{{ price | default: '&nbsp;' }}</span>
+        <span class="visually-hidden">{{ 'content.price_range' | t }}&nbsp;</span>
+        <span class="price price-range price--large">{{ price_min }} - {{ price_max }}</span>
       </span>
     {% else %}
-      <span class="price">{{ price | default: '&nbsp;' }}</span>
-    {% endif %}
+      {% comment %} Standard pricing display {% endcomment %}
+      {% if show_sale_price_first == false and show_compare_price %}
+        <span role="group">
+          <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
+          <span class="compare-at-price">{{- compare_at_price -}}</span>
+        </span>
+      {% endif %}
 
-    {% if show_sale_price_first == true and show_compare_price %}
-      <span role="group">
-        <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
-        <span class="compare-at-price">{{- compare_at_price -}}</span>
-      </span>
+      {% if show_compare_price %}
+        <span role="group">
+          <span class="visually-hidden">{{ 'content.price_sale' | t }}&nbsp;</span>
+          <span class="price">{{ price | default: '&nbsp;' }}</span>
+        </span>
+      {% else %}
+        <span class="price">{{ price | default: '&nbsp;' }}</span>
+      {% endif %}
+
+      {% if show_sale_price_first == true and show_compare_price %}
+        <span role="group">
+          <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
+          <span class="compare-at-price">{{- compare_at_price -}}</span>
+        </span>
+      {% endif %}
+
+      {% if show_compare_price %}
+        <span
+          class="price-discount-badge"
+          aria-label="Save {{ savings_percentage }} percent"
+        >
+          <span aria-hidden="true">-{{ savings_percentage }}%</span>
+        </span>
+      {% endif %}
     {% endif %}
-  {% endif %}
+  </div>
   {%- if selected_variant.unit_price and show_unit_price %}
     {%- liquid
       if use_currency

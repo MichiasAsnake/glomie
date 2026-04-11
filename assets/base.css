@@ -2104,6 +2104,62 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   white-space: nowrap;
 }
 
+.price-display {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.price-main-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: clamp(0.625rem, 1vw, 1rem);
+  row-gap: 0.35rem;
+}
+
+.price-main-row > [role='group'] {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.price-discount-badge {
+  display: none;
+  flex: 0 0 auto;
+}
+
+.product-details .price-discount-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  min-height: clamp(1.9rem, 1.75rem + 0.4vw, 2.3rem);
+  padding: 0.28em 0.78em 0.24em;
+  border-radius: 0.7rem;
+  background: linear-gradient(135deg, #ff3a30 0%, #e31713 100%);
+  box-shadow: 0 0.5rem 1.1rem rgb(227 23 19 / 0.18);
+  color: #fff;
+  font-family: var(--font-body--family);
+  font-size: clamp(0.78rem, 0.7rem + 0.35vw, 0.96rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 749px) {
+  .product-details .price-main-row {
+    column-gap: 0.75rem;
+    row-gap: 0.4rem;
+  }
+
+  .product-details .price-discount-badge {
+    min-height: 1.75rem;
+    padding: 0.26em 0.68em 0.22em;
+    border-radius: 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
 .unit-price {
   display: block;
   font-size: min(0.85em, var(--font-paragraph--size));
