@@ -263,7 +263,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Average delivery time: 3-5 business days in USA</p>",
+                "text": "<p>🚚 Average delivery time: 3-5 business days in USA</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
