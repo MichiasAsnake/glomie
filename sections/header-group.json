@@ -93,6 +93,9 @@
           "blocks": {}
         }
       },
+      "custom_css": [
+        "{padding: 10px 0px;}"
+      ],
       "settings": {
         "logo_position": "center",
         "menu_position": "right",
