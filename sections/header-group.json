@@ -21,7 +21,7 @@
             "text": "<strong>Sign up to our newsletter for 10% Off!</strong>",
             "link": "",
             "font": "var(--font-subheading--family)",
-            "font_size": "1rem",
+            "font_size": "0.875rem",
             "weight": "",
             "letter_spacing": "normal",
             "case": "none"
@@ -34,8 +34,8 @@
             "text": "<strong>Free Shipping + 30 Day Guarantee!</strong>",
             "link": "",
             "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "weight": "",
+            "font_size": "0.875rem",
+            "weight": "500",
             "letter_spacing": "normal",
             "case": "none"
           },
