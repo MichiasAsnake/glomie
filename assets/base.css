@@ -1078,12 +1078,12 @@ ul[product-grid-view='zoom-out'] .card-gallery > img {
 }
 
 .product-grid-view-zoom-out--details span {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 
 .product-grid-view-zoom-out--details .h4 {
   line-height: 1.3;
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
 }
 
 .product-grid-view-zoom-out--details > span.h6,
@@ -1300,6 +1300,8 @@ button.shopify-payment-button__button--unbranded {
 
 .button {
   font-family: var(--button-font-family-primary);
+  font-style: var(--button-font-style-primary);
+  font-weight: var(--button-font-weight-primary);
   text-transform: var(--button-text-case-primary);
   border-radius: var(--style-border-radius-buttons-primary);
 }
@@ -1310,12 +1312,16 @@ button.shopify-payment-button__button--unbranded {
 
 .button-secondary {
   font-family: var(--button-font-family-secondary);
+  font-style: var(--button-font-style-secondary);
+  font-weight: var(--button-font-weight-secondary);
   text-transform: var(--button-text-case-secondary);
   border-radius: var(--style-border-radius-buttons-secondary);
 }
 
 button.shopify-payment-button__button--unbranded {
   font-family: var(--button-font-family-primary);
+  font-style: var(--button-font-style-primary);
+  font-weight: var(--button-font-weight-primary);
   text-transform: var(--button-text-case-primary);
 }
 
@@ -2140,7 +2146,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   color: #fff;
   font-family: var(--font-body--family);
   font-size: clamp(0.78rem, 0.7rem + 0.35vw, 0.96rem);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   letter-spacing: 0.04em;
   line-height: 1;
   white-space: nowrap;

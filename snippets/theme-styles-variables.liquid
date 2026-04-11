@@ -167,6 +167,14 @@
     --font-accent--family: {{ settings.type_accent_font.family }}, {{ settings.type_accent_font.fallback_families }};
     --font-accent--style: {{ settings.type_accent_font.style }};
     --font-accent--weight: {{ settings.type_accent_font.weight }};
+    --font-weight-body: var(--font-body--weight);
+    --font-weight-subheading: var(--font-subheading--weight);
+    --font-weight-heading: var(--font-heading--weight);
+    --font-weight-accent: var(--font-accent--weight);
+    --font-weight-normal: var(--font-weight-body);
+    --font-weight-medium: var(--font-weight-subheading);
+    --font-weight-semibold: var(--font-weight-heading);
+    --font-weight-bold: var(--font-weight-accent);
 
     /* Margin sizes */
     --font-h1--spacing: 0.25em;
@@ -548,7 +556,11 @@
 
     /* Button font-family */
     --button-font-family-primary: var(--font-{{ settings.type_font_button_primary }}--family);
+    --button-font-style-primary: var(--font-{{ settings.type_font_button_primary }}--style);
+    --button-font-weight-primary: var(--font-{{ settings.type_font_button_primary }}--weight);
     --button-font-family-secondary: var(--font-{{ settings.type_font_button_secondary }}--family);
+    --button-font-style-secondary: var(--font-{{ settings.type_font_button_secondary }}--style);
+    --button-font-weight-secondary: var(--font-{{ settings.type_font_button_secondary }}--weight);
 
     /* Button text case */
     --button-text-case: {{ settings.button_text_case }};
