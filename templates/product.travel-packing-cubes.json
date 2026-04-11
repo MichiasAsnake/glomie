@@ -153,7 +153,7 @@
                   "name": "t:names.product_price",
                   "settings": {
                     "show_sale_price_first": true,
-                    "show_installments": true,
+                    "show_installments": false,
                     "show_tax_info": false,
                     "type_preset": "h3",
                     "width": "100%",
@@ -237,7 +237,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>🔥 Get 20% off when you buy the system!</p>",
+                "text": "<p><strong>🔥 Get 20% off when you buy the system!</strong></p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -263,7 +263,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>🚚 Average delivery time: 3-5 business days in USA</p>",
+                "text": "<p><strong>🚚 Average delivery time: 3-5 business days in USA</strong></p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
