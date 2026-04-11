@@ -307,7 +307,7 @@
                 "item_2_text": "Tracked shipping",
                 "item_3_icon": "return",
                 "item_3_text": "30-day returns",
-                "padding-block-start": 10,
+                "padding-block-start": 0,
                 "padding-block-end": 0
               },
               "blocks": {}
