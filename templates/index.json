@@ -534,7 +534,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h3><strong>NEWSLETTER</strong></h3>",
+                "text": "<h2>NEWSLETTER</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
