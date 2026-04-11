@@ -233,23 +233,62 @@
               },
               "block_order": []
             },
-            "support_returns_pill": {
-              "type": "product-support-note",
+            "text_G6eXJE": {
+              "type": "text",
+              "name": "t:names.text",
               "settings": {
-                "text": "30-day hassle-free returns",
-                "icon": "none",
-                "alignment": "center",
-                "link": "",
-                "open_in_new_tab": false,
+                "text": "<p>🔥 Get 20% off when you buy the system!</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h6",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
                 "padding-block-start": 0,
-                "padding-block-end": 0
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
               },
               "blocks": {}
             },
-            "support_shipping_pill": {
+            "text_CVrPjc": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p>Average delivery time: 3-5 business days in USA</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h6",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "support_returns_pill": {
               "type": "product-support-note",
               "settings": {
-                "text": "Ships in 3-5 business days",
+                "text": "",
                 "icon": "none",
                 "alignment": "center",
                 "link": "",
@@ -463,8 +502,9 @@
             "judge_me_reviews_preview_badge_TU8xrC",
             "variant_picker_pill",
             "buy_buttons_pill",
+            "text_G6eXJE",
+            "text_CVrPjc",
             "support_returns_pill",
-            "support_shipping_pill",
             "trust_row_pill",
             "fast_bundle_bundle_offer_e6YRdw",
             "accordion_pill",
