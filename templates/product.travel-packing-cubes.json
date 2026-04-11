@@ -285,19 +285,6 @@
               },
               "blocks": {}
             },
-            "support_returns_pill": {
-              "type": "product-support-note",
-              "settings": {
-                "text": "",
-                "icon": "none",
-                "alignment": "center",
-                "link": "",
-                "open_in_new_tab": false,
-                "padding-block-start": 0,
-                "padding-block-end": 0
-              },
-              "blocks": {}
-            },
             "trust_row_pill": {
               "type": "product-trust-row",
               "settings": {
@@ -504,7 +491,6 @@
             "buy_buttons_pill",
             "text_G6eXJE",
             "text_CVrPjc",
-            "support_returns_pill",
             "trust_row_pill",
             "fast_bundle_bundle_offer_e6YRdw",
             "accordion_pill",
