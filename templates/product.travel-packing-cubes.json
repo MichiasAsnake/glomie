@@ -177,6 +177,58 @@
                 "price_pill"
               ]
             },
+            "text_G6eXJE": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p><strong>🔥 Get 20% off when you buy the system!</strong></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "var(--font-subheading--family)",
+                "font_size": "0.875rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_CVrPjc": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p><strong>🚚 Average delivery time: 3-5 business days in USA</strong></p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "var(--font-subheading--family)",
+                "font_size": "0.875rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "judge_me_reviews_preview_badge_TU8xrC": {
               "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
               "disabled": true,
@@ -232,58 +284,6 @@
                 }
               },
               "block_order": []
-            },
-            "text_G6eXJE": {
-              "type": "text",
-              "name": "t:names.text",
-              "settings": {
-                "text": "<p><strong>🔥 Get 20% off when you buy the system!</strong></p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "custom",
-                "font": "var(--font-subheading--family)",
-                "font_size": "0.875rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_CVrPjc": {
-              "type": "text",
-              "name": "t:names.text",
-              "settings": {
-                "text": "<p><strong>🚚 Average delivery time: 3-5 business days in USA</strong></p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "custom",
-                "font": "var(--font-subheading--family)",
-                "font_size": "0.875rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
             },
             "trust_row_pill": {
               "type": "product-trust-row",
@@ -486,11 +486,11 @@
           "block_order": [
             "review_C9MXth",
             "group_header_pill",
+            "text_G6eXJE",
+            "text_CVrPjc",
             "judge_me_reviews_preview_badge_TU8xrC",
             "variant_picker_pill",
             "buy_buttons_pill",
-            "text_G6eXJE",
-            "text_CVrPjc",
             "trust_row_pill",
             "fast_bundle_bundle_offer_e6YRdw",
             "accordion_pill",
