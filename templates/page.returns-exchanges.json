@@ -16,21 +16,21 @@
           "type": "faq_item",
           "settings": {
             "question": "What is your return policy?",
-            "answer": "<p>Add your return policy answer here.</p>"
+            "answer": "<p>We offer 30-day hassle-free returns on eligible items from the date your order is delivered.</p><p>To qualify for a return, the item must be unused, in its original condition, and returned with its original packaging. Items marked final sale, personalized items, and gift cards are not eligible for return.</p>"
           }
         },
         "faq_exchange": {
           "type": "faq_item",
           "settings": {
             "question": "How do exchanges work?",
-            "answer": "<p>Add your exchange answer here.</p>"
+            "answer": "<p>If you need a replacement or would like to exchange an item, contact our support team within 30 days of delivery and include your order number.</p><p>Once your request is reviewed, we will share the next steps. Exchanges are subject to stock availability, and if the requested replacement is unavailable we can help arrange a return instead.</p>"
           }
         },
         "faq_refund": {
           "type": "faq_item",
           "settings": {
             "question": "How long does it take to process a refund?",
-            "answer": "<p>Add your refund timing answer here.</p>"
+            "answer": "<p>After your return is received and inspected, approved refunds are sent back to your original payment method within 5 to 10 business days.</p><p>Please note that your bank or card provider may need a few additional business days to post the refund to your account.</p>"
           }
         }
       },
