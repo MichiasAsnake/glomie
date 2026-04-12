@@ -16,21 +16,21 @@
           "type": "faq_item",
           "settings": {
             "question": "What is your return policy?",
-            "answer": "<p>Add your return policy answer here.</p>"
+            "answer": "<p>We offer a <strong>30-day return window</strong> from the date of delivery. To be eligible for a return, items must be <strong>unused, undamaged, and in their original packaging</strong>. Please note that return shipping costs are the responsibility of the customer unless the item arrived damaged or defective, and original shipping fees are non-refundable.</p><p></p>"
           }
         },
         "faq_exchange": {
           "type": "faq_item",
           "settings": {
             "question": "How do exchanges work?",
-            "answer": "<p>Add your exchange answer here.</p>"
+            "answer": "<p>We offer exchanges specifically for items that arrive <strong>damaged or defective</strong>. If your order is less than perfect, please contact our support team within <strong>7 days of delivery</strong> with photos of the issue. We will then arrange for a replacement to be sent to you at no additional cost.</p>"
           }
         },
         "faq_refund": {
           "type": "faq_item",
           "settings": {
             "question": "How long does it take to process a refund?",
-            "answer": "<p>Add your refund timing answer here.</p>"
+            "answer": "<p>Once we receive and inspect your returned item, we will notify you of the approval status. Approved refunds are processed back to your original payment method within <strong>5-7 business days</strong>.</p>"
           }
         }
       },
