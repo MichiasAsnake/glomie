@@ -135,6 +135,10 @@
                   },
                   "blocks": {}
                 },
+                "judge_me_reviews_preview_badge_p4kyH8": {
+                  "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+                  "settings": {}
+                },
                 "price_pill": {
                   "type": "price",
                   "name": "t:names.product_price",
@@ -161,6 +165,7 @@
               },
               "block_order": [
                 "product_title_pill",
+                "judge_me_reviews_preview_badge_p4kyH8",
                 "price_pill"
               ]
             },
@@ -189,10 +194,6 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "judge_me_reviews_preview_badge_97zL7H": {
-              "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-              "settings": {}
             },
             "variant_picker_pill": {
               "type": "variant-picker",
@@ -473,7 +474,6 @@
           "block_order": [
             "group_header_pill",
             "text_features_pill",
-            "judge_me_reviews_preview_badge_97zL7H",
             "variant_picker_pill",
             "buy_buttons_pill",
             "support_returns_pill",
